@@ -153,6 +153,26 @@ namespace PersonalProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cameragif {
+            get {
+                object obj = ResourceManager.GetObject("cameragif", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cameragif_flipped {
+            get {
+                object obj = ResourceManager.GetObject("cameragif_flipped", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CastAway {
             get {
                 object obj = ResourceManager.GetObject("CastAway", resourceCulture);
@@ -177,6 +197,15 @@ namespace PersonalProject.Properties {
             get {
                 object obj = ResourceManager.GetObject("Challengers", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string click {
+            get {
+                return ResourceManager.GetString("click", resourceCulture);
             }
         }
         

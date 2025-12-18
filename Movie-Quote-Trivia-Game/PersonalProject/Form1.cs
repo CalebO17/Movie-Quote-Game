@@ -29,14 +29,32 @@ namespace PersonalProject
         public Form1()
         {
             InitializeComponent();
-            loadTitleScreen(); // Loads title screen
+            this.Load += MainGameForm_Load;
 
+        }
+        private void MainGameForm_Load(object sender, EventArgs e)
+        {
+            startGame();
+        }
+
+        // Function that will play a sound effect stored in the "sounds" folder, with the 
+        // name of the sound file being passed into the function
+        private void PlaySound(string fileName)
+        {
+            string soundPath = Path.Combine(Application.StartupPath, "Sounds", fileName);
+            if (File.Exists(soundPath))
+            {
+                SoundPlayer player = new SoundPlayer(soundPath);
+                player.Play();
+            }
         }
 
         //Runs when start game button is clicked
         private void startGameBtn_Click(object sender, EventArgs e)
         {
+            PlaySound("click.wav");
             startGame(); //Loads start game function
+
         }
 
         //Function for loading data from database into array
@@ -142,7 +160,7 @@ namespace PersonalProject
                             }
 
                         }
-                        
+
                         quote.MovieQuote = quoteLine;
                         quotes.Add(quote); // Add quote to quotes list
                     }
@@ -183,11 +201,11 @@ namespace PersonalProject
                         //the "Actors" list that is in each movie object
                         foreach (Film movie in movies)
                         {
-                            if(movieName == movie.Name.ToString())
+                            if (movieName == movie.Name.ToString())
                             {
                                 foreach (Celebrity celebrity in celebrities)
                                 {
-                                    if(celebName == celebrity.Name.ToString())
+                                    if (celebName == celebrity.Name.ToString())
                                     {
                                         movie.Actors.Add(celebrity);
                                     }
@@ -198,13 +216,12 @@ namespace PersonalProject
 
                 }
             }
-        
+
         }
 
         //Function for adjusting visibility of components for starting the game
-        void startGame()
+        protected void startGame()
         {
-
             celebrities.Clear();
             quotes.Clear();
             movies.Clear();
@@ -216,20 +233,6 @@ namespace PersonalProject
             redX2.Visible = false;
             redX3.Visible = false;
             loadData();
-            startGameBtn.Visible = false;
-            movieGameTitleLbl.Visible = false;
-            quoteLbl.Visible = true;
-            hintPbx.Visible = true;
-            quoteTxtBox1.Visible = true;
-            celebLbl1.Visible = true;
-            celebLbl2.Visible = true;
-            celebLbl3.Visible = true;
-            celebPbx1.Visible = true;
-            celebPbx2.Visible = true;
-            celebPbx3.Visible = true;
-            skipPbx.Visible = true;
-            scoreLbl.Visible = true;
-            scoreNumbLbl.Visible = true;
             displayRules();
             startRound();
 
@@ -309,6 +312,7 @@ namespace PersonalProject
         // Function for adding a red X if the answer is incorrect and incrementing number of wrong guesses
         void wrongAnswer()
         {
+            PlaySound("incorrect.wav");
             incorrectGuesses++;
             if (incorrectGuesses < 4)
             {
@@ -321,7 +325,7 @@ namespace PersonalProject
         //Function for running the "Guess the movie" round after an actor is correctly guessed
         void guessTheMovie(Quote chosenQuote)
         {
-            MessageBox.Show("You got it correct, it was " + chosenQuote.Celebrity.Name.ToString() +  " but can you guess the movie for an extra point?");
+            MessageBox.Show("You got it correct, it was " + chosenQuote.Celebrity.Name.ToString() + " but can you guess the movie for an extra point?");
 
             Random randomNumb = new Random(); //Creating a random number to be used to choose the incorrect movies
 
@@ -338,11 +342,11 @@ namespace PersonalProject
                         //If the movie does not match the correct answer, and
                         //it is a movie that features the same celebrity, add
                         // it to the incorrect answers list
-                        if(chosenQuote.Film != movie && celebrity == quoteCeleb)
+                        if (chosenQuote.Film != movie && celebrity == quoteCeleb)
                         {
                             otherMovies.Add(movie);
                         }
-                    }    
+                    }
                 }
             }
 
@@ -414,50 +418,71 @@ namespace PersonalProject
         //Function that occurs when a user guesses an answer, and checks whether or not its correct
         void chooseButtonClick(Label lbl)
         {
-            //If the chosen answer is incorrect, tell the user, increment their number of wrong answers, and check if the game has ended
-            if (lbl.Tag == null)
-            {
-                MessageBox.Show("Incorrect!");
-                wrongAnswer();
-                checkForGameOver();
+            PlaySound("click.wav");
 
-            }
-            else
+            bool isCorrect = lbl.Tag != null;
+
+            if (!isCorrect)
             {
-                //If the chosen answer is correct, tell the user, update the score, update the ui, and check if the game is over
-                MessageBox.Show("Correct!");
-                addToScore();
-                checkForGameOver();
-                //If game is not in movie guessing mode, switch it to that
-                if (mode)
+                if (!mode)
                 {
-                    guessTheMovie(quotes[chosenQuoteIndex]);
-                    mode = false;
-                }
-                else
-                //If game is in movie guessing mode, start new round and remove quote from quotes list so that it does not appear twice
-                {
+                    MessageBox.Show("You got it wrong, but that's okay. It was only the bonus round!");
                     quotes.RemoveAt(chosenQuoteIndex);
                     startRound();
                     mode = true;
                 }
+                else
+                {
+                    MessageBox.Show("Incorrect!");
+                    wrongAnswer();
+                    checkForGameOver();
+                }
+                return; //Return because the incorrect path is handled
+            }
+
+            //Correct answer path
+            MessageBox.Show("Correct!");
+            addToScore();
+            checkForGameOver();
+
+            if (mode)
+            {
+                //Switch to movie guessing mode
+                guessTheMovie(quotes[chosenQuoteIndex]);
+                mode = false;
+            }
+            else
+            {
+                //Movie guessing mode finished, start next round
+                quotes.RemoveAt(chosenQuoteIndex);
+                startRound();
+                mode = true;
             }
         }
-        
+
+
         //Function that occurs when the user clicks the skip powerup
         private void skipPbx_Click(object sender, EventArgs e)
         {
-            //If user is at less than 9 they can use the skip powerup, essentially giving them a point
-            if (score < 9)
+            PlaySound("click.wav");
+            if (!mode)
             {
-                addToScore();
-                skipPbx.Visible = false;
-                startRound();
+                MessageBox.Show("You cannot use a skip in the bonus round!");
             }
-            //User cannot use skip powerup to win the game
             else
             {
-                MessageBox.Show("You cannot use the skip powerup when you're at 9/10!");
+                //If user is at less than 9 they can use the skip powerup, essentially giving them a point
+                if (score < 9)
+                {
+                    addToScore();
+                    skipPbx.Visible = false;
+                    startRound();
+                }
+                //User cannot use skip powerup to win the game
+                else
+                {
+                    MessageBox.Show("You cannot use the skip powerup when you're at 9/10!");
+                }
             }
         }
 
@@ -465,6 +490,7 @@ namespace PersonalProject
         //Function for incrementing score when an answer is correctly guessed
         void addToScore()
         {
+            PlaySound("correct.wav");
             score++;
             scoreNumbLbl.Text = (score.ToString() + "/10");
         }
@@ -472,42 +498,34 @@ namespace PersonalProject
         //Function for giving the user a hint when they click on the hint powerup
         private void hintPbx_Click(object sender, EventArgs e)
         {
-            hintPbx.Visible = false;
-            List<Hint> chosenCelebHint = new List<Hint>(); //Create a list of 10 hints related to the chosen celebrity
-            foreach (Hint hint in hints) //Go through the hints list and add each hint matching the chosen celebrity
-                                         // to the hints list
+            PlaySound("click.wav");
+            if (!mode)
             {
-                if (hint.Celebrity.Name == quotes[chosenQuoteIndex].Celebrity.Name) //If hint matches the chosen celebrity, add it to the list
-                {
-                    chosenCelebHint.Add(hint);
-                }
+                MessageBox.Show("You cannot use a hint in the bonus round!");
             }
-            chosenCelebHint = chosenCelebHint.OrderBy(x => randomNumb.Next()).ToList(); //Randomize the order of the hints
-            MessageBox.Show("Hint: " + chosenCelebHint[0].HintText.ToString()); //Display the first hint in the randomized list
-
+            else
+            {
+                hintPbx.Visible = false;
+                List<Hint> chosenCelebHint = new List<Hint>(); //Create a list of 10 hints related to the chosen celebrity
+                foreach (Hint hint in hints) //Go through the hints list and add each hint matching the chosen celebrity
+                                             // to the hints list
+                {
+                    if (hint.Celebrity.Name == quotes[chosenQuoteIndex].Celebrity.Name) //If hint matches the chosen celebrity, add it to the list
+                    {
+                        chosenCelebHint.Add(hint);
+                    }
+                }
+                chosenCelebHint = chosenCelebHint.OrderBy(x => randomNumb.Next()).ToList(); //Randomize the order of the hints
+                MessageBox.Show("Hint: " + chosenCelebHint[0].HintText.ToString()); //Display the first hint in the randomized list
+            }
         }
 
         //Function for going back to the title screen and changing the UI elements
         void loadTitleScreen()
         {
-            movieGameTitleLbl.Visible = true;
-            startGameBtn.Visible = true;
-            celebPbx1.Visible = false;
-            celebPbx2.Visible = false;
-            celebPbx3.Visible = false;
-            celebLbl1.Visible = false;
-            celebLbl2.Visible = false;
-            celebLbl3.Visible = false;
-            choose1Btn.Visible = false;
-            choose2Btn.Visible = false;
-            choose3Btn.Visible = false;
-            scoreLbl.Visible = false;
-            scoreNumbLbl.Visible = false;
-            redX1.Visible = false;
-            redX2.Visible = false;
-            redX3.Visible = false;
-
-
+            TitleScreen titleScreen = new TitleScreen();
+            this.Hide();          // hide the current form
+            titleScreen.Show();   // show the title screen form
         }
 
         //Function for displaying the rules of the game
@@ -525,6 +543,7 @@ namespace PersonalProject
             //If the user has lost, tell them and display an option to play again
             if (incorrectGuesses == 3)
             {
+                PlaySound("boo.wav");
                 MessageBox.Show("You lose!");
                 DialogResult gameOver = MessageBox.Show("Play again?", "Game Over", MessageBoxButtons.YesNo);
                 if (gameOver == DialogResult.Yes)
@@ -540,6 +559,7 @@ namespace PersonalProject
             //If user has won, tell them and display an option to play again
             else if (score == 10)
             {
+                PlaySound("cheer.wav");
                 MessageBox.Show("You win!");
                 DialogResult gameOver = MessageBox.Show("Play again?", "Game Over", MessageBoxButtons.YesNo);
                 if (gameOver == DialogResult.Yes)
@@ -572,6 +592,11 @@ namespace PersonalProject
         private void choose3Btn_Click(object sender, EventArgs e)
         {
             chooseButtonClick(celebLbl3);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
