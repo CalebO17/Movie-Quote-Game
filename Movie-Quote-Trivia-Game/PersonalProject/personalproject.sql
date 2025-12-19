@@ -52,7 +52,9 @@ INSERT INTO Actors (actor_name, birthday, actor_image_directory) VALUES
 ('Elizabeth Olsen', '1989-02-16', 'ElizabethOlsen'),
 ('Tom Hanks', '1956-07-09', 'TomHanks'),
 ('Zendaya Coleman', '1996-09-01', 'Zendaya'),
-('Hunter Schafer', '1998-12-31', 'HunterSchafer');
+('Hunter Schafer', '1998-12-31', 'HunterSchafer'),
+('Margaret Qualley', '1994-10-23', 'MargaretQualley'),
+('Florence Pugh', '1996-01-03', 'FlorencePugh');
 INSERT INTO Movies (movie_name, movie_release_date, movie_director, movie_description, movie_image_directory) VALUES
 ('Pulp Fiction', '1994-10-14', 'Quentin Tarantino', 'The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.', 'PulpFiction'),
 ('The Long Kiss Goodnight', '1996-10-07', 'Renny Harlin', 'Government agents come after an amnesiac woman, who gradually remembers her past.', 'TheLongKissGoodnight'),
@@ -92,9 +94,17 @@ INSERT INTO Movies (movie_name, movie_release_date, movie_director, movie_descri
 ('Challengers', '2024-04-26', 'Luca Guadagnino', 'A tennis coach faces off against her husband and ex-lover in a competitive tournament.', 'Challengers'),
 ('Cuckoo', '2024-08-29', 'Tilman Singer', 'A 17-year-old is forced to move with her family to a resort where things are not what they seem.', 'Cuckoo'),
 ('Belle', '2021-07-16', 'Mamoru Hosoda', 'A shy high school student becomes a world-famous singer in a massive virtual world.', 'Belle'),
-('The Hunger Games: The Ballad of Songbirds and Snakes', '2023-11-17', 'Francis Lawrence', 'Coriolanus Snow mentors Lucy Gray Baird during the 10th Hunger Games.', 'TheHungerGamesTheBalladOfSongbirdsAndSnakes');
-
-
+('The Hunger Games: The Ballad of Songbirds and Snakes', '2023-11-17', 'Francis Lawrence', 'Coriolanus Snow mentors Lucy Gray Baird during the 10th Hunger Games.', 'TheHungerGamesTheBalladOfSongbirdsAndSnakes'),
+('The Substance', '2024-09-20', 'Coralie Fargeat', 'Fading actress Elisabeth Sparkle becomes distressed when her chauvinistic boss fires her from her aerobics show. She soon injects herself with a mysterious serum that promises a younger, better version of herself, but things go horribly wrong.', 'TheSubstance'),
+('Death Note', '2017-08-24', 'Adam Wingard', 'A young man finds a supernatural notebook and uses it to mete out death, attracting the attention of a detective, a demon and a girl in his class.', 'DeathNote'),
+('Once Upon a Time in Hollywood', '2019-07-26', 'Quentin Tarantino', 'A struggling actor specializing in westerns, and a stuntman try to survive in a constantly changing movie industry.', 'OnceUponATimeInHollywood'),
+('Honey, don\'t!', '2025-08-27', 'Ethan Coen', 'A small-town private investigator delves into a series of strange deaths tied to a mysterious church.', 'HoneyDont'),
+('Drive-Away Dolls', '2024-02-22', 'Ethan Coen', 'In search of a fresh start, two best friends embark on an impromptu road trip to Tallahassee, but things quickly go awry when they cross paths with a group of inept criminals along the way.', 'DriveAwayDolls'),
+('Midsommar', '2019-07-03', 'Ari Aster', 'A couple travels to Sweden for a rural festival, which becomes increasingly disturbing.', 'Midsommar'),
+('Little Women', '2019-12-25', 'Greta Gerwig', 'The March sisters grow up during the Civil War, navigating love, loss, and independence.', 'LittleWomen'),
+('Fighting with My Family', '2019-02-14', 'Stephen Merchant', 'A former wrestler and his family make a living performing at small venues around the country while his kids dream of joining World Wrestling Entertainment.', 'FightingWithMyFamily'),
+('Black Widow', '2021-07-09', 'Cate Shortland', 'Natasha Romanoff confronts her dark past after the events of Avengers: Endgame.', 'BlackWidow'),
+('We Live in Time', '2024-10-18', 'John Crowley', 'After an unusual encounter, a talented chef and a recently divorcée fall in love and build the home and family they\'ve always dreamed of, until a painful truth puts their love story to the test.', 'WeLiveInTime');
 
 INSERT INTO Quotes (quote_line, actor_id, movie_id) VALUES
 ('Mmm, This Is A Tasty Burger!', 1, 1),
@@ -106,7 +116,8 @@ INSERT INTO Quotes (quote_line, actor_id, movie_id) VALUES
 ('How far do you think someone could run barefoot out here?', 6, 25),
 ('Stupid is as stupid does', 7, 28),
 ('My planet Arrakis is so beautiful when the sun is low. Rolling over the sands. You can see spice in the air', 8, 33),
-('We\'ve gotten through worse than this. Snow lands on top', 9, 39);
+('We\'ve gotten through worse than this. Snow lands on top', 9, 39),
+('CONTROL YOURSELF!', 10, 40);
 
 INSERT INTO Hints (actor_id, hint) VALUES
 (1, 'This person was an usher at Martin Luther King\'s funeral'),
@@ -153,7 +164,16 @@ INSERT INTO Hints (actor_id, hint) VALUES
 (9, 'This person studied art in University'),
 (9, 'This actor/actress was in prominent headlines in 2016 for their activism'),
 (9, 'This person was heavily fancast as a popular video game character, but lost the role to someone else'),
-(9, 'This actor/actress was born in New Jersey');
+(9, 'This actor/actress was born in New Jersey'),
+(10, 'This actor/actress has appeared in 3 films that have been nominated for best picture since 2019'),
+(10, 'This person attended New York University for one semester'),
+(10, 'This person has mentioned one of their big inspirations is a character from "Who framed Roger Rabbit?"'),
+(10, 'This actor/actress is considered to be a nepo baby'),
+(11, 'This actor/actress suffered from tracheomalacia as a child'),
+(11, 'This person is known for playing a Marvel character who makes Mac n Cheese with hot sauce'),
+(11, 'This actor/actress was born in Oxford, England'),
+(11, 'This persons big break was a movie released in 2014 called "The Falling"'),
+(11, 'This actor/actress was born on January 3rd, 1996');
 
 INSERT INTO ActorMovies(actor_id, movie_id) VALUES
 (1, 1),
@@ -161,6 +181,7 @@ INSERT INTO ActorMovies(actor_id, movie_id) VALUES
 (1, 3),
 (1, 4),
 (1, 5),
+(1, 42),
 (2, 6),
 (2, 7),
 (2, 8),
@@ -170,6 +191,7 @@ INSERT INTO ActorMovies(actor_id, movie_id) VALUES
 (3, 12),
 (3, 13),
 (3, 14),
+(3, 49),
 (4, 15),
 (4, 16),
 (4, 17),
@@ -194,5 +216,15 @@ INSERT INTO ActorMovies(actor_id, movie_id) VALUES
 (8, 36),
 (9, 37),
 (9, 38),
-(9, 39);
-
+(9, 39),
+(10, 40),
+(10, 41),
+(10, 42),
+(10, 43),
+(10, 44),
+(11, 33),
+(11, 45),
+(11, 46),
+(11, 47),
+(11, 48),
+(11, 49);

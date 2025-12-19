@@ -47,6 +47,8 @@
             hintPbx = new PictureBox();
             choose2Btn = new Button();
             quoteLbl = new TextBox();
+            movieDescriptionPbx = new PictureBox();
+            xPbx = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)celebPbx1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)celebPbx2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)celebPbx3).BeginInit();
@@ -55,6 +57,8 @@
             ((System.ComponentModel.ISupportInitialize)redX3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)skipPbx).BeginInit();
             ((System.ComponentModel.ISupportInitialize)hintPbx).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)movieDescriptionPbx).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)xPbx).BeginInit();
             SuspendLayout();
             // 
             // celebLbl3
@@ -106,9 +110,10 @@
             choose1Btn.Name = "choose1Btn";
             choose1Btn.Size = new Size(213, 91);
             choose1Btn.TabIndex = 8;
+            choose1Btn.Tag = "celebLbl1";
             choose1Btn.Text = "Choose";
             choose1Btn.UseVisualStyleBackColor = true;
-            choose1Btn.Click += choose1Btn_Click;
+            choose1Btn.Click += ChooseBtn_Click;
             // 
             // celebPbx1
             // 
@@ -183,9 +188,10 @@
             choose3Btn.Name = "choose3Btn";
             choose3Btn.Size = new Size(213, 91);
             choose3Btn.TabIndex = 19;
+            choose3Btn.Tag = "celebLbl3";
             choose3Btn.Text = "Choose";
             choose3Btn.UseVisualStyleBackColor = true;
-            choose3Btn.Click += choose3Btn_Click;
+            choose3Btn.Click += ChooseBtn_Click;
             // 
             // scoreLbl
             // 
@@ -210,7 +216,7 @@
             // 
             skipPbx.BackColor = Color.Transparent;
             skipPbx.Image = Properties.Resources.Skip;
-            skipPbx.Location = new Point(288, 728);
+            skipPbx.Location = new Point(168, 728);
             skipPbx.Name = "skipPbx";
             skipPbx.Size = new Size(101, 97);
             skipPbx.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -222,7 +228,7 @@
             // 
             hintPbx.BackColor = Color.Transparent;
             hintPbx.Image = Properties.Resources.questionMark;
-            hintPbx.Location = new Point(459, 728);
+            hintPbx.Location = new Point(513, 728);
             hintPbx.Name = "hintPbx";
             hintPbx.Size = new Size(101, 97);
             hintPbx.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -236,9 +242,10 @@
             choose2Btn.Name = "choose2Btn";
             choose2Btn.Size = new Size(213, 91);
             choose2Btn.TabIndex = 18;
+            choose2Btn.Tag = "celebLbl2";
             choose2Btn.Text = "Choose";
             choose2Btn.UseVisualStyleBackColor = true;
-            choose2Btn.Click += choose2Btn_Click;
+            choose2Btn.Click += ChooseBtn_Click;
             // 
             // quoteLbl
             // 
@@ -251,12 +258,38 @@
             quoteLbl.TabIndex = 26;
             quoteLbl.Text = "Quote:";
             // 
+            // movieDescriptionPbx
+            // 
+            movieDescriptionPbx.BackColor = Color.Transparent;
+            movieDescriptionPbx.Image = Properties.Resources.camera;
+            movieDescriptionPbx.Location = new Point(847, 728);
+            movieDescriptionPbx.Name = "movieDescriptionPbx";
+            movieDescriptionPbx.Size = new Size(101, 97);
+            movieDescriptionPbx.SizeMode = PictureBoxSizeMode.StretchImage;
+            movieDescriptionPbx.TabIndex = 27;
+            movieDescriptionPbx.TabStop = false;
+            movieDescriptionPbx.Click += movieDescriptionPbx_Click;
+            // 
+            // xPbx
+            // 
+            xPbx.BackColor = Color.Transparent;
+            xPbx.Image = Properties.Resources.blackX1;
+            xPbx.Location = new Point(1181, 713);
+            xPbx.Name = "xPbx";
+            xPbx.Size = new Size(132, 133);
+            xPbx.SizeMode = PictureBoxSizeMode.StretchImage;
+            xPbx.TabIndex = 28;
+            xPbx.TabStop = false;
+            xPbx.Click += xPbx_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.Screenshot_2025_11_08_150135;
             ClientSize = new Size(1442, 848);
+            Controls.Add(xPbx);
+            Controls.Add(movieDescriptionPbx);
             Controls.Add(quoteLbl);
             Controls.Add(hintPbx);
             Controls.Add(skipPbx);
@@ -285,6 +318,8 @@
             ((System.ComponentModel.ISupportInitialize)redX3).EndInit();
             ((System.ComponentModel.ISupportInitialize)skipPbx).EndInit();
             ((System.ComponentModel.ISupportInitialize)hintPbx).EndInit();
+            ((System.ComponentModel.ISupportInitialize)movieDescriptionPbx).EndInit();
+            ((System.ComponentModel.ISupportInitialize)xPbx).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -308,5 +343,7 @@
         private PictureBox hintPbx;
         private Button choose2Btn;
         private TextBox quoteLbl;
+        private PictureBox movieDescriptionPbx;
+        private PictureBox xPbx;
     }
 }

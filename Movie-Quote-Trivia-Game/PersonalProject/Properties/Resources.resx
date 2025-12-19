@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="SavingPrivateRyan" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SavingPrivateRyan.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="TheNatural" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TheNatural.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cameragif_flipped" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cameragif_flipped.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="PulpFiction" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PulpFiction.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -142,6 +142,9 @@
   <data name="AllThePresidentsMen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AllThePresidentsMen.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="blackX" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\blackX.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="TheSting" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TheSting.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -160,17 +163,26 @@
   <data name="Belle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Belle.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="blackX1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\blackX1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="TheGreatestShowman" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TheGreatestShowman.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Zendaya" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Zendaya.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="TheLongKissGoodnight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TheLongKissGoodnight.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ForrestGump" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ForrestGump.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="TheHungerGamesTheBalladOfSongbirdsAndSnakes" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TheHungerGamesTheBalladOfSongbirdsAndSnakes.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TomHanks" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TomHanks.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="HacksawRidge" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\HacksawRidge.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -180,9 +192,6 @@
   </data>
   <data name="Purple" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Purple.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="X" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\X.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="AvengersAgeOfUltron" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AvengersAgeOfUltron.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -208,8 +217,8 @@
   <data name="Big" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Big.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Dune" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Dune.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="X" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\X.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="AmericanHustle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AmericanHustle.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -217,8 +226,8 @@
   <data name="ElizabethOlsen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ElizabethOlsen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="HunterSchafer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\HunterSchafer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="AndrewGarfield" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AndrewGarfield.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Green" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -241,6 +250,9 @@
   <data name="TheOldManAndTheGun" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TheOldManAndTheGun.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="camera" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\camera.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="RobertRedford" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RobertRedford.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -250,8 +262,8 @@
   <data name="ATimeToKill" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ATimeToKill.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="TheLongKissGoodnight" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TheLongKissGoodnight.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Dune" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Dune.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Split" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Split.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -262,8 +274,8 @@
   <data name="Glass" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Glass.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AndrewGarfield" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AndrewGarfield.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SavingPrivateRyan" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SavingPrivateRyan.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Unbreakable" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Unbreakable.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -277,8 +289,8 @@
   <data name="SamJackson" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SamJackson.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="TomHanks" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TomHanks.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="HunterSchafer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HunterSchafer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="TheAmazingSpiderman2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TheAmazingSpiderman2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -289,10 +301,43 @@
   <data name="CastAway" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CastAway.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cameragif_flipped" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cameragif_flipped.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="click" xml:space="preserve">
     <value />
+  </data>
+  <data name="BlackWidow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BlackWidow.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DeathNote" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DeathNote.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DriveAwayDolls" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DriveAwayDolls.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FightingWithMyFamily" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FightingWithMyFamily.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FlorencePugh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlorencePugh.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HoneyDont" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HoneyDont.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LittleWomen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LittleWomen.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MargaretQualley" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MargaretQualley.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Midsommar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Midsommar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OnceUponATimeInHollywood" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OnceUponATimeInHollywood.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TheSubstance" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TheSubstance.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WeLiveInTime" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WeLiveInTime.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

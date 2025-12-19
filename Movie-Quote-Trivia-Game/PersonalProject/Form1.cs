@@ -34,6 +34,7 @@ namespace PersonalProject
         }
         private void MainGameForm_Load(object sender, EventArgs e)
         {
+            PlaySound("click.wav");
             startGame();
         }
 
@@ -47,14 +48,6 @@ namespace PersonalProject
                 SoundPlayer player = new SoundPlayer(soundPath);
                 player.Play();
             }
-        }
-
-        //Runs when start game button is clicked
-        private void startGameBtn_Click(object sender, EventArgs e)
-        {
-            PlaySound("click.wav");
-            startGame(); //Loads start game function
-
         }
 
         //Function for loading data from database into array
@@ -220,7 +213,7 @@ namespace PersonalProject
         }
 
         //Function for adjusting visibility of components for starting the game
-        protected void startGame()
+        void startGame()
         {
             celebrities.Clear();
             quotes.Clear();
@@ -232,6 +225,10 @@ namespace PersonalProject
             redX1.Visible = false;
             redX2.Visible = false;
             redX3.Visible = false;
+            skipPbx.Visible = true;
+            hintPbx.Visible = true;
+            xPbx.Visible = true;
+            movieDescriptionPbx.Visible = true;
             loadData();
             displayRules();
             startRound();
@@ -575,29 +572,57 @@ namespace PersonalProject
 
         }
 
-        //TEMPORARY FUNCTIONS - Will be adjusted and condensed, they are just being used for testing 
-
-        //Function for when the user guesses the first option
-        private void choose1Btn_Click(object sender, EventArgs e)
+        private void movieDescriptionPbx_Click(object sender, EventArgs e)
         {
-            chooseButtonClick(celebLbl1);
+            MessageBox.Show("The description of the film that the quote belongs to is \n" + quotes[chosenQuoteIndex].Film.Description.ToString());
+            movieDescriptionPbx.Visible = false;
         }
 
-        //Function for when the user guesses the second option
-        private void choose2Btn_Click(object sender, EventArgs e)
+        private void xPbx_Click(object sender, EventArgs e)
         {
-            chooseButtonClick(celebLbl2);
-        }
-        //Function for when the user guesses the third option
-        private void choose3Btn_Click(object sender, EventArgs e)
-        {
-            chooseButtonClick(celebLbl3);
-        }
+            List<Label> incorrectLabels = new List<Label>();
 
-        private void label1_Click(object sender, EventArgs e)
-        {
+            if (celebLbl1.Tag == null)
+            {
+                incorrectLabels.Add(celebLbl1);
+            }
+            if (celebLbl2.Tag == null)
+            {
+                incorrectLabels.Add(celebLbl2);
+            }
+            if (celebLbl3.Tag == null)
+            {
+                incorrectLabels.Add(celebLbl3);
+            }
 
+            if (incorrectLabels.Count == 0)
+            {
+                return;
+            }
+
+            Label revealed = incorrectLabels[randomNumb.Next(incorrectLabels.Count)];
+
+            MessageBox.Show("The correct answer is NOT " + revealed.Text.ToString());
+            xPbx.Visible = false;
+        }
+        private void ChooseBtn_Click(object sender, EventArgs e)
+        {
+            Button? clickedButton = sender as Button;
+
+            if (clickedButton == choose1Btn)
+            {
+                chooseButtonClick(celebLbl1);
+            }
+            else if (clickedButton == choose2Btn)
+            {
+                chooseButtonClick(celebLbl2);
+            }
+            else if (clickedButton == choose3Btn)
+            {
+                chooseButtonClick(celebLbl3);
+            }
         }
     }
-
 }
+
+
