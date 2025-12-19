@@ -1,5 +1,7 @@
 using System;
+using System.Data;
 using System.Media;
+using System.Security.Policy;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -80,7 +82,7 @@ namespace PersonalProject
                 connection.Open();
                 //Running queries and taking that data to put into objects and adding to the lists
                 string actorQuery = "SELECT * FROM Actors ORDER BY actor_id";
-                string quoteQuery = "SELECT q.quote_line, a.actor_name, m.movie_name\r\nFROM Quotes q\r\nLEFT JOIN Actors a on q.actor_id = a.actor_id\r\nLEFT JOIN Movies m on q.movie_id = m.movie_id";
+                string quoteQuery = "SELECT q.quote_line, a.actor_name, m.movie_name\r\n, q.quote_url FROM Quotes q\r\nLEFT JOIN Actors a on q.actor_id = a.actor_id\r\nLEFT JOIN Movies m on q.movie_id = m.movie_id";
                 string movieQuery = "SELECT * FROM Movies ORDER BY movie_id";
                 string hintQuery = "SELECT h.hint, a.actor_name\r\nFROM Hints h\r\nLEFT JOIN Actors a ON a.actor_id = h.actor_id";
                 string actorMovieQuery = "SELECT a.actor_name, m.movie_name\r\nFROM Actors a\r\nLEFT JOIN ActorMovies am ON a.actor_id = am.actor_id\r\nLEFT JOIN Movies m ON m.movie_id = am.movie_id;\r\n";
@@ -135,6 +137,9 @@ namespace PersonalProject
                         string quoteLine = dataReader.GetString("quote_line");
                         string quoteCelebName = dataReader.GetString("actor_name");
                         string quoteMovieName = dataReader.GetString("movie_name");
+                        string quoteURL;
+                        quoteURL = dataReader.IsDBNull(dataReader.GetOrdinal("quote_url"))? null: dataReader.GetString("quote_url");
+
                         //Matching quote data with data from the other tables
                         foreach (Celebrity celeb in celebrities)
                         {
@@ -153,8 +158,8 @@ namespace PersonalProject
                             }
 
                         }
-
                         quote.MovieQuote = quoteLine;
+                        quote.url = quoteURL;
                         quotes.Add(quote); // Add quote to quotes list
                     }
                 }
@@ -450,12 +455,44 @@ namespace PersonalProject
             }
             else
             {
-                //Movie guessing mode finished, start next round
-                quotes.RemoveAt(chosenQuoteIndex);
+                // Movie guessing mode finished
+
+                if (!string.IsNullOrEmpty(quotes[chosenQuoteIndex].url)) // Only show option if URL exists
+                {
+                    DialogResult result = MessageBox.Show(
+                        "Would you like to watch the scene that the quote is from?",
+                        "Watch Scene?",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question
+                    );
+
+                    if (result == DialogResult.Yes)
+                    {
+                        // Open the scene in the default browser
+                        try
+                        {
+                            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                            {
+                                FileName = quotes[chosenQuoteIndex].url,
+                                UseShellExecute = true
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Unable to open the link: " + ex.Message);
+                        }
+                    }
+                }
+                quotes.RemoveAt(chosenQuoteIndex); // Remove the used quote
+                // Start the next round regardless
                 startRound();
                 mode = true;
             }
+
         }
+
+        
+        
 
 
         //Function that occurs when the user clicks the skip powerup
@@ -576,6 +613,7 @@ namespace PersonalProject
         {
             MessageBox.Show("The description of the film that the quote belongs to is \n" + quotes[chosenQuoteIndex].Film.Description.ToString());
             movieDescriptionPbx.Visible = false;
+
         }
 
         private void xPbx_Click(object sender, EventArgs e)

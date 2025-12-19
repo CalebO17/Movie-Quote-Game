@@ -13,6 +13,7 @@ namespace PersonalProject
         public string MovieQuote {  get; set; }
         public Celebrity Celebrity { get; set; }
         public Film Film { get; set; }
+        public string url { get; set; }
 
     }
 
