@@ -1,5 +1,6 @@
 using System;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Media;
 using System.Security.Policy;
 using System.Windows.Forms;
@@ -12,6 +13,10 @@ namespace PersonalProject
 
     public partial class Form1 : Form
     {
+        // ---------------------------------------
+        // Class level fields and game state
+        // ---------------------------------------
+
         //Creating lists that will represent each table from MYSQL
         List<Celebrity> celebrities = new List<Celebrity>();
         List<Film> movies = new List<Film>();
@@ -22,49 +27,75 @@ namespace PersonalProject
         Random randomNumb = new Random();
 
         //Class level Variables
-        int chosenQuoteIndex = 0;
-        int score = 0;
-        int incorrectGuesses = 0;
-        bool mode = true;
+        int chosenQuoteIndex = 0; //Int representing the index of the quotes list for the chosen quote of the round
+        int score = 0; //Int representing the score of the game so far (10 to win)
+        int incorrectGuesses = 0; //Int representing the number of incorrect guesses in the game so far (3 to lose)
+        bool mode = true; //Bool representing the mode. true = actor guessing mode. false = movie guessing mode.
+        private SoundPlayer currentPlayer; //The SoundPlayer used for sound effects
+        string difficulty; //String representing the currently difficulty the player has chosen
+        int totalScore; //Int representing the max score required to win
+        int totalIncorrect; //Int representing the number of allowed incorrect guesses before the player loses
 
-        //Runs when exe file runs
-        public Form1()
+        // ---------------------------------------
+        // Constructor and Form Lifecycle
+        // ---------------------------------------
+
+        //Constructor for the Form1 component (main game) - Runs when first initialized
+        public Form1(string difficulty, int totalScore, int totalIncorrect)
         {
-            InitializeComponent();
-            this.Load += MainGameForm_Load;
+            this.difficulty = difficulty;
+            this.totalScore = totalScore;
+            this.totalIncorrect = totalIncorrect;
+            InitializeComponent(); // Initializes all components made in the designer
+            this.Load += MainGameForm_Load;    //Attach the MainGameForm_Load method to the form's Load event
+                                               //this ensures the game setup runs as soon as the form finishes loading
+            MessageBox.Show(difficulty);
 
         }
+
+        //Function that activates when the main game form loads and begins the game
         private void MainGameForm_Load(object sender, EventArgs e)
         {
-            PlaySound("click.wav");
-            startGame();
+            startGame(); // When main game form loads, activate startGame function
         }
+
+        // ---------------------------------------
+        // Utility / Helper Functions
+        // ---------------------------------------
 
         // Function that will play a sound effect stored in the "sounds" folder, with the 
         // name of the sound file being passed into the function
-        private void PlaySound(string fileName)
+        internal void PlaySound(string fileName)
         {
-            string soundPath = Path.Combine(Application.StartupPath, "Sounds", fileName);
-            if (File.Exists(soundPath))
+            string soundPath = Path.Combine(Application.StartupPath, "Sounds", fileName); //Creating a variable for the path to the sound in the sounds folder
+            if (File.Exists(soundPath)) //If the sound actually exists, play it.
             {
-                SoundPlayer player = new SoundPlayer(soundPath);
-                player.Play();
+                soundPlayer.Stop();
+                soundPlayer = new SoundPlayer(soundPath);
+                soundPlayer.Play();
             }
+            
         }
+
+        // ---------------------------------------
+        // Database Loading and Initialization
+        // ---------------------------------------
 
         //Function for loading data from database into array
         void loadData()
         {
-            redXList = new List<PictureBox> { redX1, redX2, redX3 };
+            //Declaring a list to represent each visible red X representing an incorrect answer
+            redXList = new List<PictureBox> { redX1, redX2, redX3 }; 
             //Declaring strings to represent each environment variable to connect to SQl database
-            string server = Environment.GetEnvironmentVariable("DB_SERVER");
+            string server = Environment.GetEnvironmentVariable("DB_SERVER"); 
             string port = Environment.GetEnvironmentVariable("DB_PORT");
             string user = Environment.GetEnvironmentVariable("DB_USER");
             string password = Environment.GetEnvironmentVariable("DB_PASSWORD");
             string database = Environment.GetEnvironmentVariable("DB_NAME");
 
-            //Connecting to SQL database
+            //Building the connection string with the env variables
             string connectionString = $"server={server};port={port};user={user};password={password};database={database}";
+            //Testing the connectivity
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 try //Attempting to connect to database, providing an error message if it fails
@@ -77,8 +108,10 @@ namespace PersonalProject
                     Console.WriteLine("Error connecting to mysql database");
                 };
             }
+            //Second connection which is used for actually loading data / running queries
             using (MySqlConnection connection = new MySqlConnection(connectionString)) // Connectiong to the database using the connectionString
             {
+                //Open the connection
                 connection.Open();
                 //Running queries and taking that data to put into objects and adding to the lists
                 string actorQuery = "SELECT * FROM Actors ORDER BY actor_id";
@@ -86,10 +119,14 @@ namespace PersonalProject
                 string movieQuery = "SELECT * FROM Movies ORDER BY movie_id";
                 string hintQuery = "SELECT h.hint, a.actor_name\r\nFROM Hints h\r\nLEFT JOIN Actors a ON a.actor_id = h.actor_id";
                 string actorMovieQuery = "SELECT a.actor_name, m.movie_name\r\nFROM Actors a\r\nLEFT JOIN ActorMovies am ON a.actor_id = am.actor_id\r\nLEFT JOIN Movies m ON m.movie_id = am.movie_id;\r\n";
+
+                // ------------------------------------------------------------
+                // Loading the celebrities list from the actors table in the DB
+                // ------------------------------------------------------------
                 using (MySqlCommand command = new MySqlCommand(actorQuery, connection)) // Using actorQuery
                 using (MySqlDataReader dataReader = command.ExecuteReader())
                 {
-                    //Adding celebrity data to objects and adding to list
+                    //Read every row in the actors table
                     while (dataReader.Read())
                     {
                         string name = dataReader.GetString("actor_name");
@@ -99,15 +136,19 @@ namespace PersonalProject
                         // Load the image dynamically from project resources
                         Image actorImage = (Image)Properties.Resources.ResourceManager.GetObject(resourceName);
 
-                        // Create the celebrity object with that image
+                        // Create the celebrity object with the retrieved data
                         Celebrity celeb = new Celebrity(name, birthday, actorImage);
                         // Add the newly created Celebrity object to the celebrities list
                         celebrities.Add(celeb);
                     }
                 }
+                // ------------------------------------------------------------
+                // Loading the movies list from the movie table in the DB
+                // ------------------------------------------------------------
                 using (MySqlCommand command = new MySqlCommand(movieQuery, connection))
                 using (MySqlDataReader dataReader = command.ExecuteReader())
                 {
+                    //Read every row in the movies table
                     while (dataReader.Read())
                     {
                         //Adding movie data to objects and adding to list
@@ -120,17 +161,20 @@ namespace PersonalProject
                         // Load the image dynamically from project resources
                         Image movieImage = (Image)Properties.Resources.ResourceManager.GetObject(resourceName);
 
-
+                        //Create object representing the movie/film and add it to the movies list
                         Film movie = new Film(name, description, director, releaseDate, movieImage);
                         movies.Add(movie);
                     }
                 }
 
+                // ------------------------------------------------------------
+                // Loading the quotes list from the quote table in the DB
+                // ------------------------------------------------------------
 
                 using (MySqlCommand command = new MySqlCommand(quoteQuery, connection))
                 using (MySqlDataReader dataReader = command.ExecuteReader())
                 {
-                    //Adding quote data to objects and adding to list
+                    //Read every quote from the quote table
                     while (dataReader.Read())
                     {
                         Quote quote = new Quote();
@@ -138,6 +182,7 @@ namespace PersonalProject
                         string quoteCelebName = dataReader.GetString("actor_name");
                         string quoteMovieName = dataReader.GetString("movie_name");
                         string quoteURL;
+                        //Check if the quote URL is null as some url values from the table are null
                         quoteURL = dataReader.IsDBNull(dataReader.GetOrdinal("quote_url"))? null: dataReader.GetString("quote_url");
 
                         //Matching quote data with data from the other tables
@@ -163,11 +208,13 @@ namespace PersonalProject
                         quotes.Add(quote); // Add quote to quotes list
                     }
                 }
-
+                // ------------------------------------------------------------
+                // Loading the hints list from the hints table in the DB
+                // ------------------------------------------------------------
                 using (MySqlCommand command = new MySqlCommand(hintQuery, connection))
                 using (MySqlDataReader dataReader = command.ExecuteReader())
                 {
-                    //Adding hint data to objects and adding to list
+                    //Read each row of the hints table
                     while (dataReader.Read())
                     {
                         Hint hint = new Hint();
@@ -186,8 +233,10 @@ namespace PersonalProject
                     }
 
                 }
-                using (MySqlCommand command = new MySqlCommand(actorMovieQuery, connection))
+                //---------------------------------------------------------------------------------
                 //Using the ActorMovies junction table to fill the actors list in each movie object
+                //---------------------------------------------------------------------------------
+                using (MySqlCommand command = new MySqlCommand(actorMovieQuery, connection))
                 using (MySqlDataReader dataReader = command.ExecuteReader())
                 {
                     while (dataReader.Read())
@@ -217,32 +266,41 @@ namespace PersonalProject
 
         }
 
+        // ---------------------------------------
+        // Game Start and Round Setup
+        // ---------------------------------------
+
         //Function for adjusting visibility of components for starting the game
         void startGame()
         {
-            celebrities.Clear();
-            quotes.Clear();
-            movies.Clear();
-            hints.Clear();
-            score = 0;
-            scoreNumbLbl.Text = score.ToString() + "/10";
-            incorrectGuesses = 0;
+            celebrities.Clear(); //Empty celebrities list
+            quotes.Clear(); //Empty quotes list
+            movies.Clear(); //Empty movies list
+            hints.Clear(); //Empty hints list
+            score = 0; //Set score to 0
+            scoreNumbLbl.Text = (score.ToString() + "/" + totalScore); //Set score label to default
+            incorrectGuesses = 0; //Set incorrect guesses back to 0
+            //Make red Xs invisible again
             redX1.Visible = false;
             redX2.Visible = false;
             redX3.Visible = false;
+            //Make powerups visible again
             skipPbx.Visible = true;
             hintPbx.Visible = true;
             xPbx.Visible = true;
             movieDescriptionPbx.Visible = true;
+            //Load data from MySQL back into the lists
             loadData();
+            //Display the rules to the user
             displayRules();
+            //Begin the round
             startRound();
-
         }
 
         //Function for adjusting visibility for starting round and adding logic
         void startRound()
         {
+            //Ensure all the correct buttons are visible and the tags are cleared 
             choose1Btn.Visible = true;
             choose2Btn.Visible = true;
             choose3Btn.Visible = true;
@@ -311,6 +369,126 @@ namespace PersonalProject
             }
         }
 
+        // ---------------------------------------
+        // Answer Selection and Core Gameplay Logic
+        // ---------------------------------------
+
+        //Function that occurs when a user guesses an answer, and checks whether or not its correct
+        void chooseButtonClick(Label lbl)
+        {
+            PlaySound("click.wav");
+            //Setting a bool that will check the label correlating to the button clicked, and become true if the answer is correct
+            bool isCorrect = lbl.Tag != null;
+
+            //----------------------------
+            //Incorrect answer path
+            //----------------------------
+            if (!isCorrect)
+            {
+                //If incorrect in the bonus round, don't increment incorrect answers, but simply remove the quote from the quotes list and move onto the next round
+                if (!mode && difficulty == "easy")
+                {
+                    MessageBox.Show("You got it wrong, but that's okay. It was only the bonus round!");
+                    quotes.RemoveAt(chosenQuoteIndex);
+                    startRound();//Start next round
+                    mode = true;//Set mode back to the default quote guessing mode
+                }
+                else
+                {
+                    //If incorrect in the normal round, increment incorrect answers, check for game over
+                    MessageBox.Show("Incorrect!");
+                    wrongAnswer();
+                    checkForGameOver();
+                }
+                return; //Return because the incorrect path is handled
+            }
+            //-------------------------
+            //Correct answer path
+            //-------------------------
+            MessageBox.Show("Correct!");
+            addToScore();//Increment score
+            checkForGameOver();//Check if game is over (score is at 10)
+
+            //If in the default gamemode, switch to the movie guessing mode
+            if (mode)
+            {
+                guessTheMovie(quotes[chosenQuoteIndex]);
+                mode = false;//Set the mode to movie guessing mode
+            }
+            else
+            {
+                // If movie guessing mode finished...
+
+                //Offer to direct the player to a Youtube video of the scene the quote came from, only if it exists (not every quote has an official movie clip of it on Youtube, so some are null)
+                if (!string.IsNullOrEmpty(quotes[chosenQuoteIndex].url)) // Only show option if URL exists
+                {
+                    DialogResult result = MessageBox.Show(
+                        "Would you like to watch the scene that the quote is from?",
+                        "Watch Scene?",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question
+                    );
+
+                    if (result == DialogResult.Yes)
+                    {
+                        // Open the scene in the default browser
+                        try
+                        {
+                            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                            {
+                                //URL of the video 
+                                FileName = quotes[chosenQuoteIndex].url,
+                                //Must be enabled to allow URLs to be opened
+                                UseShellExecute = true
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            //If any error occurs, show the error instead of crashing
+                            MessageBox.Show("Unable to open the link: " + ex.Message);
+                        }
+                    }
+                }
+                quotes.RemoveAt(chosenQuoteIndex); // Remove the used quote
+                // Start the next round regardless
+                startRound();
+                mode = true;
+            }
+
+        }
+
+        //Function that activates when any answer is selected by the user
+        private void ChooseBtn_Click(object sender, EventArgs e)
+        {
+            Button? clickedButton = sender as Button; //Grab the button that was clicked
+
+            //Find out which button was clicked, and active the chooseButtonClick function for the correlating label
+            if (clickedButton == choose1Btn)
+            {
+                chooseButtonClick(celebLbl1);
+            }
+            else if (clickedButton == choose2Btn)
+            {
+                chooseButtonClick(celebLbl2);
+            }
+            else if (clickedButton == choose3Btn)
+            {
+                chooseButtonClick(celebLbl3);
+            }
+        }
+
+        //-------------------------------------------------------------------------------
+        //Score, winning/losing, game state
+        //--------------------------------------------------------------------------------
+
+        //Function for incrementing score when an answer is correctly guessed
+        void addToScore()
+        {
+            PlaySound("correct.wav");
+            score++;
+            scoreNumbLbl.Text = (score.ToString() + "/" + totalScore.ToString());
+        }
+
         // Function for adding a red X if the answer is incorrect and incrementing number of wrong guesses
         void wrongAnswer()
         {
@@ -323,6 +501,53 @@ namespace PersonalProject
         }
 
 
+        //Function that checks if the game has ended yet
+        void checkForGameOver()
+        {
+                //If the user has lost, tell them and play the correlating sound effect
+                if (incorrectGuesses == totalIncorrect)
+                {
+                    PlaySound("boo.wav");
+                    MessageBox.Show("You lose!");
+                }
+                //If user has won, tell them and play the correlating sound effect
+                else if (score == totalScore)
+                {
+                    PlaySound("cheer.wav");
+                    MessageBox.Show("You win!");
+                }
+                else
+                {
+                    return;
+                }
+       
+            //Give them the option to play again or go back to the title screen
+            DialogResult gameOver = MessageBox.Show("Play again?", "Game Over", MessageBoxButtons.YesNo);
+            //If they want to play again, simply restart the process of playing the game
+            if (gameOver == DialogResult.Yes)
+            {
+                DialogResult difficultyOption = MessageBox.Show("Would you like to adjust the difficulty?", "Change Difficulty", MessageBoxButtons.YesNo);
+                if (difficultyOption == DialogResult.Yes)
+                {
+                    loadDifficulty();
+                }
+                else
+                {
+                    startGame();
+                }
+
+            }
+            //Otherwise, take them back to the title screen
+            else
+            {
+                loadTitleScreen();
+            }
+        }
+        
+
+        //-------------------------------------------------------------------------------
+        //Bonus Round - Guess the Movie
+        //--------------------------------------------------------------------------------
 
         //Function for running the "Guess the movie" round after an actor is correctly guessed
         void guessTheMovie(Quote chosenQuote)
@@ -370,7 +595,6 @@ namespace PersonalProject
 
         }
 
-
         //Function for assigning movie information onto the UI for the movie guessing round
         void assignMovieTextboxes(int movieLocation, Film movie, bool correctAnswer)
         {
@@ -417,142 +641,145 @@ namespace PersonalProject
             }
         }
 
-        //Function that occurs when a user guesses an answer, and checks whether or not its correct
-        void chooseButtonClick(Label lbl)
-        {
-            PlaySound("click.wav");
-
-            bool isCorrect = lbl.Tag != null;
-
-            if (!isCorrect)
-            {
-                if (!mode)
-                {
-                    MessageBox.Show("You got it wrong, but that's okay. It was only the bonus round!");
-                    quotes.RemoveAt(chosenQuoteIndex);
-                    startRound();
-                    mode = true;
-                }
-                else
-                {
-                    MessageBox.Show("Incorrect!");
-                    wrongAnswer();
-                    checkForGameOver();
-                }
-                return; //Return because the incorrect path is handled
-            }
-
-            //Correct answer path
-            MessageBox.Show("Correct!");
-            addToScore();
-            checkForGameOver();
-
-            if (mode)
-            {
-                //Switch to movie guessing mode
-                guessTheMovie(quotes[chosenQuoteIndex]);
-                mode = false;
-            }
-            else
-            {
-                // Movie guessing mode finished
-
-                if (!string.IsNullOrEmpty(quotes[chosenQuoteIndex].url)) // Only show option if URL exists
-                {
-                    DialogResult result = MessageBox.Show(
-                        "Would you like to watch the scene that the quote is from?",
-                        "Watch Scene?",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Question
-                    );
-
-                    if (result == DialogResult.Yes)
-                    {
-                        // Open the scene in the default browser
-                        try
-                        {
-                            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
-                            {
-                                FileName = quotes[chosenQuoteIndex].url,
-                                UseShellExecute = true
-                            });
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Unable to open the link: " + ex.Message);
-                        }
-                    }
-                }
-                quotes.RemoveAt(chosenQuoteIndex); // Remove the used quote
-                // Start the next round regardless
-                startRound();
-                mode = true;
-            }
-
-        }
-
-        
-        
+        //-------------------------------------------------------------------------------
+        //Powerup logic functions
+        //--------------------------------------------------------------------------------
 
 
         //Function that occurs when the user clicks the skip powerup
         private void skipPbx_Click(object sender, EventArgs e)
         {
             PlaySound("click.wav");
-            if (!mode)
+            if (difficulty == "hard")
             {
-                MessageBox.Show("You cannot use a skip in the bonus round!");
+                declinePowerup();
             }
             else
             {
-                //If user is at less than 9 they can use the skip powerup, essentially giving them a point
-                if (score < 9)
+                //If user attempts to use the skip button in the bonus round, tell them that they cannot
+                if (!mode)
                 {
-                    addToScore();
-                    skipPbx.Visible = false;
-                    startRound();
+                    MessageBox.Show("You cannot use a skip in the bonus round!");
                 }
-                //User cannot use skip powerup to win the game
                 else
                 {
-                    MessageBox.Show("You cannot use the skip powerup when you're at 9/10!");
+                    //If user is not one point away from winning, they can use the skip powerup, essentially giving them a point
+                    if (!(score + 1 == totalScore))
+                    {
+                        addToScore();
+                        skipPbx.Visible = false;
+                        startRound();
+                    }
+                    //User cannot use skip powerup to win the game
+                    else
+                    {
+                        MessageBox.Show("You cannot use the skip powerup when you're one point away from a victory!");
+                    }
                 }
             }
-        }
-
-
-        //Function for incrementing score when an answer is correctly guessed
-        void addToScore()
-        {
-            PlaySound("correct.wav");
-            score++;
-            scoreNumbLbl.Text = (score.ToString() + "/10");
         }
 
         //Function for giving the user a hint when they click on the hint powerup
         private void hintPbx_Click(object sender, EventArgs e)
         {
             PlaySound("click.wav");
-            if (!mode)
+            if (difficulty == "hard")
             {
-                MessageBox.Show("You cannot use a hint in the bonus round!");
+                declinePowerup();
             }
             else
             {
-                hintPbx.Visible = false;
-                List<Hint> chosenCelebHint = new List<Hint>(); //Create a list of 10 hints related to the chosen celebrity
-                foreach (Hint hint in hints) //Go through the hints list and add each hint matching the chosen celebrity
-                                             // to the hints list
+                //If user attempts to use a hint in the bonus round, tell them that they cannot
+                if (!mode)
                 {
-                    if (hint.Celebrity.Name == quotes[chosenQuoteIndex].Celebrity.Name) //If hint matches the chosen celebrity, add it to the list
-                    {
-                        chosenCelebHint.Add(hint);
-                    }
+                    MessageBox.Show("You cannot use a hint in the bonus round!");
                 }
-                chosenCelebHint = chosenCelebHint.OrderBy(x => randomNumb.Next()).ToList(); //Randomize the order of the hints
-                MessageBox.Show("Hint: " + chosenCelebHint[0].HintText.ToString()); //Display the first hint in the randomized list
+                else
+                {
+                    hintPbx.Visible = false;
+                    List<Hint> chosenCelebHint = new List<Hint>(); //Create a list of 10 hints related to the chosen celebrity
+                    foreach (Hint hint in hints) //Go through the hints list and add each hint matching the chosen celebrity
+                                                 // to the hints list
+                    {
+                        if (hint.Celebrity.Name == quotes[chosenQuoteIndex].Celebrity.Name) //If hint matches the chosen celebrity, add it to the list
+                        {
+                            chosenCelebHint.Add(hint);
+                        }
+                    }
+                    chosenCelebHint = chosenCelebHint.OrderBy(x => randomNumb.Next()).ToList(); //Randomize the order of the hints
+                    MessageBox.Show("Hint: " + chosenCelebHint[0].HintText.ToString()); //Display the first hint in the randomized list
+                }
             }
         }
+
+        //Function that activates when the movie description powerup is clicked
+        //it will display the description of the selected movie and then remove the powerup
+        private void movieDescriptionPbx_Click(object sender, EventArgs e)
+        {
+            PlaySound("click.wav");
+            if (difficulty == "hard")
+            {
+                declinePowerup();
+            }
+            else
+            {
+                MessageBox.Show("The description of the film that the quote belongs to is \n" + quotes[chosenQuoteIndex].Film.Description.ToString());
+                movieDescriptionPbx.Visible = false;
+            }
+
+        }
+
+        //Function that activates when the x powerup is clicked
+        //it will tell the user one of the INCORRECT answers and then remove the powerup
+        private void xPbx_Click(object sender, EventArgs e)
+        {
+            PlaySound("click.wav");
+            if (difficulty == "hard")
+            {
+                declinePowerup();
+            }
+            else
+            {
+                List<Label> incorrectLabels = new List<Label>(); //Create a list of incorrect answers
+
+                //Search through and find the two incorrect answers. Add them to the list
+                if (celebLbl1.Tag == null)
+                {
+                    incorrectLabels.Add(celebLbl1);
+                }
+                if (celebLbl2.Tag == null)
+                {
+                    incorrectLabels.Add(celebLbl2);
+                }
+                if (celebLbl3.Tag == null)
+                {
+                    incorrectLabels.Add(celebLbl3);
+                }
+
+                //Extra validation to avoid the program crashing if there are 0 incorrect labels for some reason
+                if (incorrectLabels.Count == 0)
+                {
+                    return;
+                }
+
+                Label revealed = incorrectLabels[randomNumb.Next(incorrectLabels.Count)]; //Set a variable to a random one of the incorrect answers
+
+                MessageBox.Show("The correct answer is NOT " + revealed.Text.ToString()); //Display one of the incorrect answers
+                xPbx.Visible = false; //Remove the powerup
+            }
+        }
+
+        //Function for telling the user that they cannot use a powerup because they chose the "hard" difficulty
+
+        void declinePowerup()
+        {
+            MessageBox.Show("Sorry, but you chose the hard difficulty. No powerups allowed!");
+        }
+
+        //-------------------------------------------------------------------------------
+        //UI Navigation
+        //--------------------------------------------------------------------------------
+
 
         //Function for going back to the title screen and changing the UI elements
         void loadTitleScreen()
@@ -565,101 +792,22 @@ namespace PersonalProject
         //Function for displaying the rules of the game
         void displayRules()
         {
-            MessageBox.Show("How to play: \n1)A movie quote will be displayed to you\n" +
+            PlaySound("GameRules.wav");
+            MessageBox.Show("How to play: \n\n1)A movie quote will be displayed to you\n\n" +
         "2)You will be given three options of who said the quote" +
-        "\n3)If you guess correctly, you will gain a point and proceed to a bonus round. 10 points and you win! if you get it incorrect you will be given an X. Three X's and you lose" +
-        "\n4)In the bonus round, you will be given an opportunity to guess which movie the quote is from. If you guess correctly, you gain a point. However, if you guess incorrectly you do NOT gain an X");
+        "\n\n3)If you guess correctly, you will gain a point and proceed to a bonus round. 10 points and you win! if you get it incorrect you will be given an X. Three X's and you lose" +
+        "\n\n4)In the bonus round, you will be given an opportunity to guess which movie the quote is from. If you guess correctly, you gain a point. However, if you guess incorrectly you do NOT gain an X");
+            soundPlayer.Stop();
         }
 
-        //Function that checks if the game has ended yet
-        void checkForGameOver()
+        void loadDifficulty()
         {
-            //If the user has lost, tell them and display an option to play again
-            if (incorrectGuesses == 3)
-            {
-                PlaySound("boo.wav");
-                MessageBox.Show("You lose!");
-                DialogResult gameOver = MessageBox.Show("Play again?", "Game Over", MessageBoxButtons.YesNo);
-                if (gameOver == DialogResult.Yes)
-                {
-                    startGame();
-
-                }
-                else
-                {
-                    loadTitleScreen();
-                }
-            }
-            //If user has won, tell them and display an option to play again
-            else if (score == 10)
-            {
-                PlaySound("cheer.wav");
-                MessageBox.Show("You win!");
-                DialogResult gameOver = MessageBox.Show("Play again?", "Game Over", MessageBoxButtons.YesNo);
-                if (gameOver == DialogResult.Yes)
-                {
-                    startGame();
-
-                }
-                else
-                {
-                    loadTitleScreen();
-                }
-            }
-
+            DifficultySetting difficultyPage = new DifficultySetting();
+            this.Hide();
+            difficultyPage.Show();
         }
 
-        private void movieDescriptionPbx_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("The description of the film that the quote belongs to is \n" + quotes[chosenQuoteIndex].Film.Description.ToString());
-            movieDescriptionPbx.Visible = false;
 
-        }
-
-        private void xPbx_Click(object sender, EventArgs e)
-        {
-            List<Label> incorrectLabels = new List<Label>();
-
-            if (celebLbl1.Tag == null)
-            {
-                incorrectLabels.Add(celebLbl1);
-            }
-            if (celebLbl2.Tag == null)
-            {
-                incorrectLabels.Add(celebLbl2);
-            }
-            if (celebLbl3.Tag == null)
-            {
-                incorrectLabels.Add(celebLbl3);
-            }
-
-            if (incorrectLabels.Count == 0)
-            {
-                return;
-            }
-
-            Label revealed = incorrectLabels[randomNumb.Next(incorrectLabels.Count)];
-
-            MessageBox.Show("The correct answer is NOT " + revealed.Text.ToString());
-            xPbx.Visible = false;
-        }
-        private void ChooseBtn_Click(object sender, EventArgs e)
-        {
-            Button? clickedButton = sender as Button;
-
-            if (clickedButton == choose1Btn)
-            {
-                chooseButtonClick(celebLbl1);
-            }
-            else if (clickedButton == choose2Btn)
-            {
-                chooseButtonClick(celebLbl2);
-            }
-            else if (clickedButton == choose3Btn)
-            {
-                chooseButtonClick(celebLbl3);
-            }
-        }
     }
 }
 

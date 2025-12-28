@@ -19,11 +19,13 @@ namespace PersonalProject
 
         private void startGameBtn_Click(object sender, EventArgs e)
         {
-            // Create the main game form
-            Form1 mainGame = new Form1();
 
-            // Show the main game form
-            mainGame.Show();
+
+            // Create the difficulty settings form
+            DifficultySetting difficulty = new DifficultySetting();
+
+            // Show the difficulty form
+            difficulty.Show();
 
             // Hide the title screen
             this.Hide();
