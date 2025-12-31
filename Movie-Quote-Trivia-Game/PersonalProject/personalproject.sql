@@ -25,7 +25,8 @@ quote_line VARCHAR (200),
 actor_id INT, 
 FOREIGN KEY (actor_id) REFERENCES Actors(actor_id),
 movie_id INT,
-FOREIGN KEY (movie_id) REFERENCES Movies(movie_id)
+FOREIGN KEY (movie_id) REFERENCES Movies(movie_id),
+quote_url VARCHAR(500)
 );
 
 CREATE TABLE Hints (
@@ -54,7 +55,13 @@ INSERT INTO Actors (actor_name, birthday, actor_image_directory) VALUES
 ('Zendaya Coleman', '1996-09-01', 'Zendaya'),
 ('Hunter Schafer', '1998-12-31', 'HunterSchafer'),
 ('Margaret Qualley', '1994-10-23', 'MargaretQualley'),
-('Florence Pugh', '1996-01-03', 'FlorencePugh');
+('Florence Pugh', '1996-01-03', 'FlorencePugh'),
+('Meryl Streep', '1949-06-22', 'MerylStreep'),
+('Marlon Brando', '1924-04-03', 'MarlonBrando'),
+('Judy Garland', '1922-06-10', 'JudyGarland'),
+('Tom Cruise', '1962-07-03', 'TomCruise'),
+('Elle Fanning', '1998-04-09', 'ElleFanning');
+
 INSERT INTO Movies (movie_name, movie_release_date, movie_director, movie_description, movie_image_directory) VALUES
 ('Pulp Fiction', '1994-10-14', 'Quentin Tarantino', 'The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.', 'PulpFiction'),
 ('The Long Kiss Goodnight', '1996-10-07', 'Renny Harlin', 'Government agents come after an amnesiac woman, who gradually remembers her past.', 'TheLongKissGoodnight'),
@@ -104,20 +111,50 @@ INSERT INTO Movies (movie_name, movie_release_date, movie_director, movie_descri
 ('Little Women', '2019-12-25', 'Greta Gerwig', 'The March sisters grow up during the Civil War, navigating love, loss, and independence.', 'LittleWomen'),
 ('Fighting with My Family', '2019-02-14', 'Stephen Merchant', 'A former wrestler and his family make a living performing at small venues around the country while his kids dream of joining World Wrestling Entertainment.', 'FightingWithMyFamily'),
 ('Black Widow', '2021-07-09', 'Cate Shortland', 'Natasha Romanoff confronts her dark past after the events of Avengers: Endgame.', 'BlackWidow'),
-('We Live in Time', '2024-10-18', 'John Crowley', 'After an unusual encounter, a talented chef and a recently divorcée fall in love and build the home and family they\'ve always dreamed of, until a painful truth puts their love story to the test.', 'WeLiveInTime');
+('We Live in Time', '2024-10-18', 'John Crowley', 'After an unusual encounter, a talented chef and a recently divorcée fall in love and build the home and family they\'ve always dreamed of, until a painful truth puts their love story to the test.', 'WeLiveInTime'),
+('The Devil Wears Prada', '2006-06-30', 'David Frankel', 'An aspiring journalist starts working as an assistant to one of the city\'s biggest high fashion magazine editors', 'TheDevilWearsPrada'),
+('Kramer vs. Kramer', '1979-12-19', 'Robert Benton', 'A just-divorced man must learn to care for his son on his own, and then must fight in court to keep custody of him.', 'KramerVsKramer'),
+('Sophies Choice', '1982-12-08', 'Alan J. Pakula', 'A woman struggles with haunting memories from WWII.', 'SophiesChoice'),
+('Mamma Mia!', '2008-07-18', 'Phyllida Lloyd', 'An independent hotelier is preparing for her daughter\'s wedding with the help of two old friends. Meanwhile Sophie, the spirited bride, has a plan.', 'MammaMia'),
+('The Godfather', '1972-03-24', 'Francis Ford Coppola', 'The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.', 'TheGodfather'),
+('A Streetcar Named Desire', '1951-09-18', 'Elia Kazan', 'Disturbed Blanche DuBois moves in with her sister in New Orleans and is tormented by her brutish brother-in-law while her reality crumbles around her.', 'AStreetcarNamedDesire'),
+('On the Waterfront', '1954-07-28', 'Elia Kazan', 'A dockworker stands up to corruption.', 'OnTheWaterfront'),
+('Apocalypse Now', '1979-08-15', 'Francis Ford Coppola', 'A U.S. Army officer serving in Vietnam is tasked with assassinating a renegade Special Forces Colonel who sees himself as a god.', 'ApocalypseNow'),
+('The Wild One', '1953-12-30', 'László Benedek', 'Two rival motorcycle gangs terrorize a small town after one of their leaders is thrown in jail.', 'TheWildOne'),
+('Superman: The Movie', '1978-12-15', 'Richard Donner', 'An alien orphan is sent from his dying planet to Earth, where he grows up to become his adoptive home\'s first and greatest superhero.', 'Superman78'),
+('The Wizard of Oz', '1939-08-25', 'Victor Fleming', 'A young girl is swept away by a tornado to a magical land', 'TheWizardOfOz'),
+('A Star Is Born', '1954-09-29', 'George Cukor', 'A rising star falls in love with an actor past his prime and struggling with personal issues', 'AStarIsBorn'),
+('Meet Me in St. Louis', '1944-11-28', 'Vincente Minnelli', 'Young love and childish fears highlight a year in the life of a turn-of-the-century family.', 'MeetMeInStLouis'),
+('Easter Parade', '1948-06-30', 'Charles Walters', 'A dancer searches for a new partner.', 'EasterParade'),
+('Judgment at Nuremberg', '1961-12-18', 'Stanley Kramer', 'Judges confront Nazi war crimes.', 'JudgementAtNuremberg'),
+('Top Gun', '1986-05-16', 'Tony Scott', 'When hotshot fighter pilot is sent to a navy school, his reckless attitude and cocky demeanor put him at odds with the other pilots', 'TopGun'),
+('Mission Impossible: Ghost Protocol', '2011-12-21', 'Brad Bird', 'A spy and his team must go rogue when they\'re framed for bombing the Kremlin', 'MissionImpossibleGhostProtocol'),
+('Magnolia', '1999-12-10', 'Paul Thomas Anderson', 'An epic mosaic of interrelated characters in search of love, forgiveness and meaning in the San Fernando Valley', 'Magnolia'),
+('Risky Business', '1983-08-05', 'Paul Brickman', 'A Chicago teenager is looking for fun at home while his parents are away, but the situation quickly gets out of hand.', 'RiskyBusiness'),
+('Edge of Tomorrow', '2014-06-06', 'Doug Liman', 'A man fighting in a war against aliens must relive the same day every time he dies until he can find a way to stop their power source with the help of an elite soldier.', 'EdgeOfTomorrow'),
+('Predator: Badlands', '2025-11-07', 'Dan Trachtenberg', 'Cast out from its clan, an alien hunter and an unlikely ally embark on a treacherous journey in search of the ultimate adversary.', 'PredatorBadlands'),
+('Mary Shelley', '2018-07-06', 'Haifaa al-Mansour', 'The life of Mary Wollstonecraft Godwin, who at 16 met 21-year-old poet Percy Shelley, resulting in the writing of "Frankenstein".', 'MaryShelley'),
+('All the Bright Places', '2020-02-28', 'Brett Haley', 'After meeting each other, two teenagers struggle with the emotional and physical scars of their pasts. They discover that even the smallest moments can mean something.', 'AllTheBrightPlaces'),
+('Sentimental Value', '2025-11-14', 'Joachim Trier', 'An intimate exploration of family, memories, and the reconciliatory power of art.', 'SentimentalValue');
 
-INSERT INTO Quotes (quote_line, actor_id, movie_id) VALUES
-('Mmm, This Is A Tasty Burger!', 1, 1),
-('Other charcter: Were you always this stupid, or did you take lessons? _________: I took lessons.', 1,2),
-('Now that... is a cheeseburger.', 2, 6),
-('You better lawyer up, because I\'m not coming back for 30%, I\'m coming back for EVERYTHING.', 3, 10),
-('You just keep thinking, Butch. That\'s what you\'re good at', 4, 15),
-('I\'m not on a diet. I\'m just crying five times a day', 5, 20),
-('How far do you think someone could run barefoot out here?', 6, 25),
-('Stupid is as stupid does', 7, 28),
-('My planet Arrakis is so beautiful when the sun is low. Rolling over the sands. You can see spice in the air', 8, 33),
-('We\'ve gotten through worse than this. Snow lands on top', 9, 39),
-('CONTROL YOURSELF!', 10, 40);
+INSERT INTO Quotes (quote_line, actor_id, movie_id, quote_url) VALUES
+('Mmm, This Is A Tasty Burger!', 1, 1, 'https://www.youtube.com/watch?v=JE8xhfx4u58'),
+('I don\'t remember asking you a goddamn thing!', 1, 1, 'https://www.youtube.com/watch?v=JE8xhfx4u58'),
+('Now that... is a cheeseburger.', 2, 6, 'https://www.youtube.com/watch?v=Pls7lt9Fz-E'),
+('You better lawyer up, because I\'m not coming back for 30%, I\'m coming back for EVERYTHING.', 3, 10, 'https://www.youtube.com/watch?v=tjMGuJMIgwM'),
+('You just keep thinking, Butch. That\'s what you\'re good at', 4, 15, NULL),
+('I\'m not on a diet. I\'m just crying five times a day', 5, 20, NULL),
+('You break the rules and become a hero. I do it and I become the enemy. That doesn\'t seem fair', 6, 27, 'https://www.youtube.com/watch?v=QbB_GLAUOTQ'),
+('Stupid is as stupid does', 7, 28, 'https://www.youtube.com/watch?v=BRYqNfHcJsE'),
+('My planet Arrakis is so beautiful when the sun is low. Rolling over the sands. You can see spice in the air', 8, 33, NULL),
+('We\'ve gotten through worse than this. Snow lands on top', 9, 39, NULL),
+('CONTROL YOURSELF!', 10, 40, NULL),
+('I\'m making a mold of my foot for Laurie to remind him I have nice feet', 11, 46, NULL),
+('By all means, move at a glacial pace', 12, 50, NULL),
+('I\'m gonna make him an offer he can\'t refuse', 13, 54, 'https://www.youtube.com/watch?v=D6me2-OurCw'),
+('I think we\'re not in Kansas, anymore', 14, 60, 'https://www.youtube.com/watch?v=1N77NaxlGlU'),
+('I feel the need... the need for speed', 15, 65, NULL),
+('But now, misery has come home, and men appear to me as monsters, thirsting for each other\'s blood. And I, a miserable spectacle of wrecked humanity, pitiable to others, and intolerable to myself.', 16, 71, NULL);
 
 INSERT INTO Hints (actor_id, hint) VALUES
 (1, 'This person was an usher at Martin Luther King\'s funeral'),
@@ -173,7 +210,33 @@ INSERT INTO Hints (actor_id, hint) VALUES
 (11, 'This person is known for playing a Marvel character who makes Mac n Cheese with hot sauce'),
 (11, 'This actor/actress was born in Oxford, England'),
 (11, 'This persons big break was a movie released in 2014 called "The Falling"'),
-(11, 'This actor/actress was born on January 3rd, 1996');
+(11, 'This actor/actress was born on January 3rd, 1996'),
+(12, 'This person was award the American medal of freedom by then President Barack Obama'),
+(12, 'Robert De Niro has called this person "His favorite actress to work with"'),
+(12, 'This person has a Sesame Street character named in their honour'),
+(12, 'This person went to school with Sigourney Weaver'),
+(12, 'This persons fans call themselves "Streepers"'),
+(13, 'This person starred in what is highly regarded as the best film of all time, released in 1972'),
+(13, 'This person is known for working with director Francis Ford Coppola'),
+(13, 'In this persons final years, they were known to go into chatrooms to start arguements'),
+(13, 'This person passed away in 2004'),
+(13, 'This person received top billing in nearly every film they appeared in, even if not cast in the lead role.'),
+(14, 'The day this person died, there was a tornado in Kansas'),
+(14, 'This person won 5 Grammys over their career'),
+(14, 'This person\'s most iconic role is also infamous for how horrible she was treated on set'),
+(14, 'This person played a character named "Dorothy"'),
+(14, 'This actor/actress inspired a character on "Gilligans Island"'),
+(15, 'This person refuses to allow his likeness in video games or action figures'),
+(15, 'This person has had many controversies over his long career'),
+(15, 'This person is widely regarded as "The last true movie star"'),
+(15, 'This person is well known for performing all of his dangerous stunts'),
+(15, 'This person used to be married to Nicole Kidman'),
+(16, 'This person has a sister named Dakota, who is also an actor'),
+(16, 'She and her sister have a fear of thunderstorms and lightning.'),
+(16, 'She is the only actress to play a leading role in films by Francis Ford Coppola and his daughter Sofia Coppola.'),
+(16, 'This person most recently starred in a movie called "Sentimental Value"'),
+(16, 'She refers to herself as a "Nepo-Sister" due to following in her sisters footsteps as an actor');
+
 
 INSERT INTO ActorMovies(actor_id, movie_id) VALUES
 (1, 1),
@@ -181,7 +244,6 @@ INSERT INTO ActorMovies(actor_id, movie_id) VALUES
 (1, 3),
 (1, 4),
 (1, 5),
-(1, 42),
 (2, 6),
 (2, 7),
 (2, 8),
@@ -227,4 +289,33 @@ INSERT INTO ActorMovies(actor_id, movie_id) VALUES
 (11, 46),
 (11, 47),
 (11, 48),
-(11, 49);
+(11, 49),
+(12, 50),
+(12, 51),
+(12, 52),
+(12, 53),
+(13, 54),
+(13, 55),
+(13, 56),
+(13, 57),
+(13, 58),
+(13, 59),
+(14, 60),
+(14, 61),
+(14, 62),
+(14, 63),
+(14, 64),
+(15, 65),
+(15, 66),
+(15, 67),
+(15, 68),
+(15, 69),
+(16, 70),
+(16, 71),
+(16, 72),
+(16, 73);
+
+SELECT a.actor_id, a.actor_name, m.movie_name, m.movie_id
+FROM Actors a 
+JOIN ActorMovies am ON am.actor_id = a.actor_id
+JOIN Movies m ON m.movie_id = am.movie_id;

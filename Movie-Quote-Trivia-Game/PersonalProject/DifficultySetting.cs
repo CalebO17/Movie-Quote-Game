@@ -42,9 +42,9 @@ namespace PersonalProject
                 totalScore = 25;
                 totalIncorrect = 1;
             }
-            Form1 mainGame = new Form1(difficulty, totalScore, totalIncorrect);
+            MainGame mainGame = new MainGame(difficulty, totalScore, totalIncorrect);
             mainGame.Show();
-            this.Hide();
+            this.Close();
         }
     }
 }
