@@ -60,7 +60,8 @@ INSERT INTO Actors (actor_name, birthday, actor_image_directory) VALUES
 ('Marlon Brando', '1924-04-03', 'MarlonBrando'),
 ('Judy Garland', '1922-06-10', 'JudyGarland'),
 ('Tom Cruise', '1962-07-03', 'TomCruise'),
-('Elle Fanning', '1998-04-09', 'ElleFanning');
+('Elle Fanning', '1998-04-09', 'ElleFanning'),
+('Robert De Niro', '1943-08-17', 'RobertDeNiro');
 
 INSERT INTO Movies (movie_name, movie_release_date, movie_director, movie_description, movie_image_directory) VALUES
 ('Pulp Fiction', '1994-10-14', 'Quentin Tarantino', 'The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.', 'PulpFiction'),
@@ -135,8 +136,12 @@ INSERT INTO Movies (movie_name, movie_release_date, movie_director, movie_descri
 ('Predator: Badlands', '2025-11-07', 'Dan Trachtenberg', 'Cast out from its clan, an alien hunter and an unlikely ally embark on a treacherous journey in search of the ultimate adversary.', 'PredatorBadlands'),
 ('Mary Shelley', '2018-07-06', 'Haifaa al-Mansour', 'The life of Mary Wollstonecraft Godwin, who at 16 met 21-year-old poet Percy Shelley, resulting in the writing of "Frankenstein".', 'MaryShelley'),
 ('All the Bright Places', '2020-02-28', 'Brett Haley', 'After meeting each other, two teenagers struggle with the emotional and physical scars of their pasts. They discover that even the smallest moments can mean something.', 'AllTheBrightPlaces'),
-('Sentimental Value', '2025-11-14', 'Joachim Trier', 'An intimate exploration of family, memories, and the reconciliatory power of art.', 'SentimentalValue');
-
+('Sentimental Value', '2025-11-14', 'Joachim Trier', 'An intimate exploration of family, memories, and the reconciliatory power of art.', 'SentimentalValue'),
+('Taxi Driver', '1976-02-08', 'Martin Scorsese', 'A mentally unstable veteran works as a nighttime taxi driver in New York City, where the perceived decadence and sleaze fuels his urge for violent action.', 'TaxiDriver'),
+('Goodfellas', '1990-09-19', 'Martin Scorsese', 'The story of Henry Hill and his life in the mafia, covering his relationship with his wife Karen and his mob partners Jimmy Conway and Tommy DeVito.', 'Goodfellas'),
+('Meet the parents', '2000-10-06', 'Jay Roach','A young man\'s first visit to his girlfriend\'s parents\' house turns out to be more nightmarish than he could ever have imagined due to the wrath of her father', 'MeetTheParents'),
+('The Irishman', '2019-11-01', 'Martin Scorsese', 'An illustration of Frank Sheeran\'s life, from W.W.II veteran to hit-man for the Bufalino crime family and his alleged assassination of his close friend Jimmy Hoffa.', 'TheIrishman'),
+('Dirty Grandpa', '2016-01-22', 'Dan Mazer', 'Right before his wedding, an uptight corporate lawyer is tricked into driving his grandfather, a lecherous former Army Lieutenant Colonel, to Florida for Spring Break.', 'DirtyGrandpa');
 INSERT INTO Quotes (quote_line, actor_id, movie_id, quote_url) VALUES
 ('Mmm, This Is A Tasty Burger!', 1, 1, 'https://www.youtube.com/watch?v=JE8xhfx4u58'),
 ('I don\'t remember asking you a goddamn thing!', 1, 1, 'https://www.youtube.com/watch?v=JE8xhfx4u58'),
@@ -154,8 +159,8 @@ INSERT INTO Quotes (quote_line, actor_id, movie_id, quote_url) VALUES
 ('I\'m gonna make him an offer he can\'t refuse', 13, 54, 'https://www.youtube.com/watch?v=D6me2-OurCw'),
 ('I think we\'re not in Kansas, anymore', 14, 60, 'https://www.youtube.com/watch?v=1N77NaxlGlU'),
 ('I feel the need... the need for speed', 15, 65, NULL),
-('But now, misery has come home, and men appear to me as monsters, thirsting for each other\'s blood. And I, a miserable spectacle of wrecked humanity, pitiable to others, and intolerable to myself.', 16, 71, NULL);
-
+('But now, misery has come home, and men appear to me as monsters, thirsting for each other\'s blood. And I, a miserable spectacle of wrecked humanity, pitiable to others, and intolerable to myself.', 16, 71, NULL),
+('You talkin\' to me?', 17, 74, 'https://www.youtube.com/watch?v=-QWL-FwX4t4');
 INSERT INTO Hints (actor_id, hint) VALUES
 (1, 'This person was an usher at Martin Luther King\'s funeral'),
 (1, 'This person is known to actively enjoy watching their own movies'),
@@ -235,7 +240,12 @@ INSERT INTO Hints (actor_id, hint) VALUES
 (16, 'She and her sister have a fear of thunderstorms and lightning.'),
 (16, 'She is the only actress to play a leading role in films by Francis Ford Coppola and his daughter Sofia Coppola.'),
 (16, 'This person most recently starred in a movie called "Sentimental Value"'),
-(16, 'She refers to herself as a "Nepo-Sister" due to following in her sisters footsteps as an actor');
+(16, 'She refers to herself as a "Nepo-Sister" due to following in her sisters footsteps as an actor'),
+(17, 'This person is known for their frequent collaborations with Martin Scorsese'),
+(17, 'This actor is known for his intense method acting'),
+(17, 'This actor is known for playing scary, abrasive, and violent characters'),
+(17, 'This person is known for starring in a lot of gangster movies'),
+(17, 'This actor once portrayed gangster Al Capone in a 1987 crime thriller directed by Brian De Palma');
 
 
 INSERT INTO ActorMovies(actor_id, movie_id) VALUES
@@ -313,7 +323,12 @@ INSERT INTO ActorMovies(actor_id, movie_id) VALUES
 (16, 70),
 (16, 71),
 (16, 72),
-(16, 73);
+(16, 73),
+(17, 74),
+(17, 75),
+(17, 76),
+(17, 77),
+(17, 78);
 
 SELECT a.actor_id, a.actor_name, m.movie_name, m.movie_id
 FROM Actors a 
