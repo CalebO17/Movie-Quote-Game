@@ -16,10 +16,13 @@ namespace PersonalProject
         {
             InitializeComponent();
         }
-
-        private void startGameBtn_Click(object sender, EventArgs e)
+        private void gameTitlePnl_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void startGameBtn_Click_1(object sender, EventArgs e)
+        {
 
             // Create the difficulty settings form
             DifficultySetting difficulty = new DifficultySetting();
