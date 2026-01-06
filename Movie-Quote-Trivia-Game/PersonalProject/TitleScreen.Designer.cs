@@ -151,11 +151,13 @@
             // 
             // TitleScreen
             // 
-            AutoScaleDimensions = new SizeF(192F, 192F);
-            AutoScaleMode = AutoScaleMode.Dpi;
+            AutoScaleMode = AutoScaleMode.None;
             BackgroundImage = Properties.Resources.Screenshot_2025_11_08_150135;
             ClientSize = new Size(1393, 827);
             Controls.Add(tableLayoutPanel1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "TitleScreen";
             Text = "TitleScreen";
             ((System.ComponentModel.ISupportInitialize)cameraFlippedPbx).EndInit();

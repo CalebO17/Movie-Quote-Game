@@ -123,11 +123,13 @@
             // 
             // DifficultySetting
             // 
-            AutoScaleDimensions = new SizeF(192F, 192F);
-            AutoScaleMode = AutoScaleMode.Dpi;
+            AutoScaleMode = AutoScaleMode.None;
             BackgroundImage = Properties.Resources.Screenshot_2025_11_08_150135;
             ClientSize = new Size(1577, 879);
             Controls.Add(tableLayoutPanel1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "DifficultySetting";
             Text = "DifficultySetting";
             tableLayoutPanel1.ResumeLayout(false);
