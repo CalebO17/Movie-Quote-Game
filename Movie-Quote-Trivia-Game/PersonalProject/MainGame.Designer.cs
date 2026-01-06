@@ -68,7 +68,7 @@
             celebLbl3.Anchor = AnchorStyles.Top;
             celebLbl3.AutoSize = true;
             celebLbl3.Font = new Font("Modern No. 20", 8.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            celebLbl3.Location = new Point(1001, 592);
+            celebLbl3.Location = new Point(1001, 589);
             celebLbl3.MaximumSize = new Size(250, 0);
             celebLbl3.Name = "celebLbl3";
             celebLbl3.Size = new Size(153, 25);
@@ -80,7 +80,7 @@
             celebLbl2.Anchor = AnchorStyles.Top;
             celebLbl2.AutoSize = true;
             celebLbl2.Font = new Font("Modern No. 20", 8.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            celebLbl2.Location = new Point(667, 592);
+            celebLbl2.Location = new Point(667, 589);
             celebLbl2.MaximumSize = new Size(250, 0);
             celebLbl2.Name = "celebLbl2";
             celebLbl2.Size = new Size(153, 25);
@@ -92,7 +92,7 @@
             celebLbl1.Anchor = AnchorStyles.Top;
             celebLbl1.AutoSize = true;
             celebLbl1.Font = new Font("Modern No. 20", 8.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            celebLbl1.Location = new Point(334, 592);
+            celebLbl1.Location = new Point(334, 589);
             celebLbl1.MaximumSize = new Size(250, 0);
             celebLbl1.Name = "celebLbl1";
             celebLbl1.Size = new Size(153, 25);
@@ -103,7 +103,7 @@
             // 
             quoteTxtBox1.BackColor = Color.DodgerBlue;
             quoteTxtBox1.Font = new Font("Franklin Gothic Medium", 10.125F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            quoteTxtBox1.Location = new Point(521, 150);
+            quoteTxtBox1.Location = new Point(521, 149);
             quoteTxtBox1.Multiline = true;
             quoteTxtBox1.Name = "quoteTxtBox1";
             quoteTxtBox1.Size = new Size(445, 102);
@@ -112,7 +112,7 @@
             // choose1Btn
             // 
             choose1Btn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            choose1Btn.Location = new Point(306, 258);
+            choose1Btn.Location = new Point(306, 257);
             choose1Btn.Name = "choose1Btn";
             choose1Btn.Size = new Size(209, 70);
             choose1Btn.TabIndex = 8;
@@ -125,9 +125,9 @@
             // 
             celebPbx1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             celebPbx1.BackgroundImageLayout = ImageLayout.None;
-            celebPbx1.Location = new Point(306, 334);
+            celebPbx1.Location = new Point(306, 333);
             celebPbx1.Name = "celebPbx1";
-            celebPbx1.Size = new Size(209, 255);
+            celebPbx1.Size = new Size(209, 253);
             celebPbx1.SizeMode = PictureBoxSizeMode.StretchImage;
             celebPbx1.TabIndex = 11;
             celebPbx1.TabStop = false;
@@ -136,9 +136,9 @@
             // 
             celebPbx2.Anchor = AnchorStyles.Top;
             celebPbx2.BackgroundImageLayout = ImageLayout.None;
-            celebPbx2.Location = new Point(637, 334);
+            celebPbx2.Location = new Point(637, 333);
             celebPbx2.Name = "celebPbx2";
-            celebPbx2.Size = new Size(212, 255);
+            celebPbx2.Size = new Size(212, 253);
             celebPbx2.SizeMode = PictureBoxSizeMode.StretchImage;
             celebPbx2.TabIndex = 12;
             celebPbx2.TabStop = false;
@@ -147,9 +147,9 @@
             // 
             celebPbx3.Anchor = AnchorStyles.Top;
             celebPbx3.BackgroundImageLayout = ImageLayout.None;
-            celebPbx3.Location = new Point(972, 334);
+            celebPbx3.Location = new Point(972, 333);
             celebPbx3.Name = "celebPbx3";
-            celebPbx3.Size = new Size(211, 255);
+            celebPbx3.Size = new Size(211, 253);
             celebPbx3.SizeMode = PictureBoxSizeMode.StretchImage;
             celebPbx3.TabIndex = 13;
             celebPbx3.TabStop = false;
@@ -196,7 +196,7 @@
             // choose3Btn
             // 
             choose3Btn.Dock = DockStyle.Fill;
-            choose3Btn.Location = new Point(972, 258);
+            choose3Btn.Location = new Point(972, 257);
             choose3Btn.Name = "choose3Btn";
             choose3Btn.Size = new Size(212, 70);
             choose3Btn.TabIndex = 19;
@@ -228,7 +228,7 @@
             // 
             skipPbx.BackColor = Color.Transparent;
             skipPbx.Image = Properties.Resources.Skip;
-            skipPbx.Location = new Point(3, 624);
+            skipPbx.Location = new Point(3, 646);
             skipPbx.Name = "skipPbx";
             skipPbx.Size = new Size(66, 62);
             skipPbx.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -240,7 +240,7 @@
             // 
             hintPbx.BackColor = Color.Transparent;
             hintPbx.Image = Properties.Resources.questionMark;
-            hintPbx.Location = new Point(972, 703);
+            hintPbx.Location = new Point(972, 753);
             hintPbx.Name = "hintPbx";
             hintPbx.Size = new Size(66, 63);
             hintPbx.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -251,7 +251,7 @@
             // choose2Btn
             // 
             choose2Btn.Anchor = AnchorStyles.Top;
-            choose2Btn.Location = new Point(637, 258);
+            choose2Btn.Location = new Point(637, 257);
             choose2Btn.Name = "choose2Btn";
             choose2Btn.Size = new Size(213, 70);
             choose2Btn.TabIndex = 18;
@@ -265,7 +265,7 @@
             quoteLbl.Anchor = AnchorStyles.Bottom;
             quoteLbl.BackColor = Color.White;
             quoteLbl.Font = new Font("Franklin Gothic Medium Cond", 19.875F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            quoteLbl.Location = new Point(664, 70);
+            quoteLbl.Location = new Point(664, 69);
             quoteLbl.Multiline = true;
             quoteLbl.Name = "quoteLbl";
             quoteLbl.Size = new Size(158, 74);
@@ -276,7 +276,7 @@
             // 
             movieDescriptionPbx.BackColor = Color.Transparent;
             movieDescriptionPbx.Image = Properties.Resources.camera;
-            movieDescriptionPbx.Location = new Point(306, 703);
+            movieDescriptionPbx.Location = new Point(306, 753);
             movieDescriptionPbx.Name = "movieDescriptionPbx";
             movieDescriptionPbx.Size = new Size(66, 62);
             movieDescriptionPbx.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -289,7 +289,7 @@
             xPbx.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             xPbx.BackColor = Color.Transparent;
             xPbx.Image = Properties.Resources.blackX1;
-            xPbx.Location = new Point(1351, 624);
+            xPbx.Location = new Point(1351, 646);
             xPbx.Name = "xPbx";
             xPbx.Size = new Size(88, 73);
             xPbx.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -336,9 +336,9 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 12.8496075F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 9.053133F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 30.8064442F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 3.42293835F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 9.319126F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 17.1238976F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 6.485849F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 12.7358494F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 11.320755F));
             tableLayoutPanel1.Size = new Size(1442, 848);
             tableLayoutPanel1.TabIndex = 29;
             // 
