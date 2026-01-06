@@ -1,6 +1,6 @@
 ﻿namespace PersonalProject
 {
-    partial class DifficultySetting
+    partial class DifficultySettings
     {
         /// <summary>
         /// Required designer variable.

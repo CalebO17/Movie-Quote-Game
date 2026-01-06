@@ -49,7 +49,6 @@ namespace PersonalProject
             InitializeComponent(); // Initializes all components made in the designer
             this.Load += MainGameForm_Load;    //Attach the MainGameForm_Load method to the form's Load event
                                                //this ensures the game setup runs as soon as the form finishes loading
-            MessageBox.Show(difficulty);
 
         }
 
@@ -782,14 +781,14 @@ namespace PersonalProject
             MessageBox.Show("How to play: \n\n1)A movie quote will be displayed to you\n\n" +
         "2)You will be given three options of who said the quote" +
         "\n\n3)If you guess correctly, you will gain a point and proceed to a bonus round. 10 points and you win! if you get it incorrect you will be given an X. Three X's and you lose" +
-        "\n\n4)In the bonus round, you will be given an opportunity to guess which movie the quote is from. If you guess correctly, you gain a point. However, if you guess incorrectly you do NOT gain an X");
+        "\n\n4)In the bonus round, you will be given an opportunity to guess which movie the quote is from. If you guess correctly, you gain a point. However, if you guess incorrectly you do NOT gain an X (unless you've chosen the hard difficulty");
             soundPlayer.Stop();
         }
 
         //Function for loading the DifficultySettings form
         void LoadDifficulty()
         {
-            DifficultySetting difficultyPage = new DifficultySetting();
+            DifficultySettings difficultyPage = new DifficultySettings();
             this.Close();
             difficultyPage.Show();
         }

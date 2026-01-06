@@ -25,7 +25,7 @@ namespace PersonalProject
         {
 
             // Create the difficulty settings form
-            DifficultySetting difficulty = new DifficultySetting();
+            DifficultySettings difficulty = new DifficultySettings();
 
             // Show the difficulty form
             difficulty.Show();
