@@ -15,10 +15,6 @@ namespace PersonalProject
         {
             get
             {
-                if (name == null || name =="")
-                {
-                    name = "Jeff";
-                }
                 return name;
             }
             set
