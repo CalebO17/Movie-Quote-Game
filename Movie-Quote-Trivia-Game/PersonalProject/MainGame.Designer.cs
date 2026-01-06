@@ -67,11 +67,11 @@
             // 
             celebLbl3.Anchor = AnchorStyles.Top;
             celebLbl3.AutoSize = true;
-            celebLbl3.Font = new Font("Modern No. 20", 8.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            celebLbl3.Location = new Point(1001, 589);
+            celebLbl3.Font = new Font("Modern No. 20", 7.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            celebLbl3.Location = new Point(1016, 589);
             celebLbl3.MaximumSize = new Size(250, 0);
             celebLbl3.Name = "celebLbl3";
-            celebLbl3.Size = new Size(153, 25);
+            celebLbl3.Size = new Size(123, 21);
             celebLbl3.TabIndex = 1;
             celebLbl3.Text = "Celeb name 3";
             // 
@@ -79,11 +79,11 @@
             // 
             celebLbl2.Anchor = AnchorStyles.Top;
             celebLbl2.AutoSize = true;
-            celebLbl2.Font = new Font("Modern No. 20", 8.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            celebLbl2.Location = new Point(667, 589);
+            celebLbl2.Font = new Font("Modern No. 20", 7.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            celebLbl2.Location = new Point(682, 589);
             celebLbl2.MaximumSize = new Size(250, 0);
             celebLbl2.Name = "celebLbl2";
-            celebLbl2.Size = new Size(153, 25);
+            celebLbl2.Size = new Size(123, 21);
             celebLbl2.TabIndex = 2;
             celebLbl2.Text = "Celeb name 2";
             // 
@@ -91,11 +91,11 @@
             // 
             celebLbl1.Anchor = AnchorStyles.Top;
             celebLbl1.AutoSize = true;
-            celebLbl1.Font = new Font("Modern No. 20", 8.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            celebLbl1.Location = new Point(334, 589);
+            celebLbl1.Font = new Font("Modern No. 20", 7.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            celebLbl1.Location = new Point(349, 589);
             celebLbl1.MaximumSize = new Size(250, 0);
             celebLbl1.Name = "celebLbl1";
-            celebLbl1.Size = new Size(153, 25);
+            celebLbl1.Size = new Size(123, 21);
             celebLbl1.TabIndex = 3;
             celebLbl1.Text = "Celeb name 1";
             // 
