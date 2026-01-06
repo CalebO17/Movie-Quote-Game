@@ -151,7 +151,8 @@
             // 
             // TitleScreen
             // 
-            AutoScaleMode = AutoScaleMode.None;
+            AutoScaleDimensions = new SizeF(192F, 192F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             BackgroundImage = Properties.Resources.Screenshot_2025_11_08_150135;
             ClientSize = new Size(1393, 827);
             Controls.Add(tableLayoutPanel1);
