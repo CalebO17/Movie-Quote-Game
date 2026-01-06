@@ -2,167 +2,159 @@
 {
     partial class TitleScreen
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
-            {
                 components.Dispose();
-            }
             base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             movieGameTitleLbl = new Label();
-            headline2Lbl = new Label();
             headline1Lbl = new Label();
-            cameraFlippedPbx = new PictureBox();
+            headline2Lbl = new Label();
             cameraPbx = new PictureBox();
-            tableLayoutPanel1 = new TableLayoutPanel();
+            cameraFlippedPbx = new PictureBox();
             startGameBtn = new Button();
-            ((System.ComponentModel.ISupportInitialize)cameraFlippedPbx).BeginInit();
+            tableLayoutPanel1 = new TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)cameraPbx).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)cameraFlippedPbx).BeginInit();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // movieGameTitleLbl
             // 
-            movieGameTitleLbl.Anchor = AnchorStyles.Top;
+            movieGameTitleLbl.Anchor = AnchorStyles.None;
             movieGameTitleLbl.AutoSize = true;
             movieGameTitleLbl.BackColor = Color.DodgerBlue;
             movieGameTitleLbl.BorderStyle = BorderStyle.FixedSingle;
-            movieGameTitleLbl.FlatStyle = FlatStyle.Popup;
-            movieGameTitleLbl.Font = new Font("Gill Sans Ultra Bold", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            movieGameTitleLbl.Location = new Point(396, 150);
+            movieGameTitleLbl.Font = new Font("Gill Sans Ultra Bold", 18F);
+            movieGameTitleLbl.Location = new Point(1093, 490);
+            movieGameTitleLbl.Margin = new Padding(6, 0, 6, 0);
             movieGameTitleLbl.Name = "movieGameTitleLbl";
             movieGameTitleLbl.Size = new Size(599, 71);
-            movieGameTitleLbl.TabIndex = 32;
+            movieGameTitleLbl.TabIndex = 0;
             movieGameTitleLbl.Text = "Movie Quote Game!";
-            // 
-            // headline2Lbl
-            // 
-            headline2Lbl.Anchor = AnchorStyles.Top;
-            headline2Lbl.AutoSize = true;
-            headline2Lbl.BackColor = Color.MediumTurquoise;
-            headline2Lbl.BorderStyle = BorderStyle.FixedSingle;
-            headline2Lbl.FlatStyle = FlatStyle.Popup;
-            headline2Lbl.Font = new Font("Gill Sans Ultra Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            headline2Lbl.Location = new Point(436, 675);
-            headline2Lbl.Name = "headline2Lbl";
-            headline2Lbl.Size = new Size(520, 46);
-            headline2Lbl.TabIndex = 36;
-            headline2Lbl.Text = "You're in the right place!";
+            movieGameTitleLbl.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // headline1Lbl
             // 
+            headline1Lbl.Anchor = AnchorStyles.None;
             headline1Lbl.AutoSize = true;
             headline1Lbl.BackColor = Color.DarkTurquoise;
             headline1Lbl.BorderStyle = BorderStyle.FixedSingle;
-            headline1Lbl.Dock = DockStyle.Bottom;
-            headline1Lbl.Enabled = false;
-            headline1Lbl.FlatStyle = FlatStyle.Popup;
-            headline1Lbl.Font = new Font("Gill Sans Ultra Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            headline1Lbl.Location = new Point(382, 585);
+            headline1Lbl.Font = new Font("Gill Sans Ultra Bold", 12F);
+            headline1Lbl.Location = new Point(950, 1178);
+            headline1Lbl.Margin = new Padding(6, 0, 6, 0);
             headline1Lbl.Name = "headline1Lbl";
-            headline1Lbl.Size = new Size(628, 90);
-            headline1Lbl.TabIndex = 33;
+            headline1Lbl.Size = new Size(884, 46);
+            headline1Lbl.TabIndex = 4;
             headline1Lbl.Text = "Do you want to test your movie knowledge?";
             headline1Lbl.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // cameraFlippedPbx
+            // headline2Lbl
             // 
-            cameraFlippedPbx.Anchor = AnchorStyles.Right;
-            cameraFlippedPbx.BackColor = Color.White;
-            cameraFlippedPbx.BackgroundImage = Properties.Resources.Screenshot_2025_11_08_150135;
-            cameraFlippedPbx.Image = Properties.Resources.cameragif_flipped;
-            cameraFlippedPbx.Location = new Point(1114, 155);
-            cameraFlippedPbx.Name = "cameraFlippedPbx";
-            cameraFlippedPbx.Size = new Size(276, 214);
-            cameraFlippedPbx.TabIndex = 35;
-            cameraFlippedPbx.TabStop = false;
+            headline2Lbl.Anchor = AnchorStyles.None;
+            headline2Lbl.AutoSize = true;
+            headline2Lbl.BackColor = Color.MediumTurquoise;
+            headline2Lbl.BorderStyle = BorderStyle.FixedSingle;
+            headline2Lbl.Font = new Font("Gill Sans Ultra Bold", 12F);
+            headline2Lbl.Location = new Point(1132, 1479);
+            headline2Lbl.Margin = new Padding(6, 0, 6, 0);
+            headline2Lbl.Name = "headline2Lbl";
+            headline2Lbl.Size = new Size(520, 46);
+            headline2Lbl.TabIndex = 5;
+            headline2Lbl.Text = "You're in the right place!";
+            headline2Lbl.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // cameraPbx
             // 
             cameraPbx.BackColor = Color.White;
             cameraPbx.BackgroundImage = Properties.Resources.Screenshot_2025_11_08_150135;
+            cameraPbx.Dock = DockStyle.Fill;
             cameraPbx.Image = Properties.Resources.cameragif;
-            cameraPbx.Location = new Point(3, 153);
+            cameraPbx.Location = new Point(6, 306);
+            cameraPbx.Margin = new Padding(6, 6, 6, 6);
             cameraPbx.Name = "cameraPbx";
-            cameraPbx.Size = new Size(276, 214);
-            cameraPbx.TabIndex = 34;
+            cameraPbx.Size = new Size(746, 439);
+            cameraPbx.SizeMode = PictureBoxSizeMode.Zoom;
+            cameraPbx.TabIndex = 1;
             cameraPbx.TabStop = false;
+            // 
+            // cameraFlippedPbx
+            // 
+            cameraFlippedPbx.BackColor = Color.White;
+            cameraFlippedPbx.BackgroundImage = Properties.Resources.Screenshot_2025_11_08_150135;
+            cameraFlippedPbx.Dock = DockStyle.Fill;
+            cameraFlippedPbx.Image = Properties.Resources.cameragif_flipped;
+            cameraFlippedPbx.Location = new Point(2033, 306);
+            cameraFlippedPbx.Margin = new Padding(6, 6, 6, 6);
+            cameraFlippedPbx.Name = "cameraFlippedPbx";
+            cameraFlippedPbx.Size = new Size(747, 439);
+            cameraFlippedPbx.SizeMode = PictureBoxSizeMode.Zoom;
+            cameraFlippedPbx.TabIndex = 2;
+            cameraFlippedPbx.TabStop = false;
+            // 
+            // startGameBtn
+            // 
+            startGameBtn.Dock = DockStyle.Fill;
+            startGameBtn.FlatAppearance.BorderSize = 5;
+            startGameBtn.FlatStyle = FlatStyle.Flat;
+            startGameBtn.Font = new Font("Rockwell Extra Bold", 9F);
+            startGameBtn.Location = new Point(764, 757);
+            startGameBtn.Margin = new Padding(6, 6, 6, 6);
+            startGameBtn.Name = "startGameBtn";
+            startGameBtn.Size = new Size(1257, 288);
+            startGameBtn.TabIndex = 3;
+            startGameBtn.Text = "Start Game";
+            startGameBtn.Click += startGameBtn_Click_1;
             // 
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.BackgroundImage = Properties.Resources.Screenshot_2025_11_08_150135;
             tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 27.21088F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 45.5782356F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 27.2108879F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 27.21F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 45.58F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 27.21F));
             tableLayoutPanel1.Controls.Add(movieGameTitleLbl, 1, 1);
-            tableLayoutPanel1.Controls.Add(cameraFlippedPbx, 2, 1);
             tableLayoutPanel1.Controls.Add(cameraPbx, 0, 1);
-            tableLayoutPanel1.Controls.Add(headline2Lbl, 1, 4);
-            tableLayoutPanel1.Controls.Add(headline1Lbl, 1, 3);
+            tableLayoutPanel1.Controls.Add(cameraFlippedPbx, 2, 1);
             tableLayoutPanel1.Controls.Add(startGameBtn, 1, 2);
+            tableLayoutPanel1.Controls.Add(headline1Lbl, 1, 3);
+            tableLayoutPanel1.Controls.Add(headline2Lbl, 1, 4);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Margin = new Padding(6, 6, 6, 6);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 5;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 18.181818F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 27.272728F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 18.181818F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 18.181818F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 18.181818F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(1393, 827);
-            tableLayoutPanel1.TabIndex = 38;
-            // 
-            // startGameBtn
-            // 
-            startGameBtn.BackgroundImageLayout = ImageLayout.Stretch;
-            startGameBtn.Dock = DockStyle.Fill;
-            startGameBtn.FlatAppearance.BorderColor = Color.Black;
-            startGameBtn.FlatAppearance.BorderSize = 5;
-            startGameBtn.FlatStyle = FlatStyle.Flat;
-            startGameBtn.Font = new Font("Rockwell Extra Bold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            startGameBtn.Location = new Point(382, 378);
-            startGameBtn.Name = "startGameBtn";
-            startGameBtn.Size = new Size(628, 144);
-            startGameBtn.TabIndex = 37;
-            startGameBtn.Text = "Start Game";
-            startGameBtn.UseVisualStyleBackColor = true;
-            startGameBtn.Click += startGameBtn_Click_1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 18.18F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 27.27F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 18.18F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 18.18F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 18.18F));
+            tableLayoutPanel1.Size = new Size(2786, 1654);
+            tableLayoutPanel1.TabIndex = 0;
             // 
             // TitleScreen
             // 
             AutoScaleDimensions = new SizeF(192F, 192F);
             AutoScaleMode = AutoScaleMode.Dpi;
             BackgroundImage = Properties.Resources.Screenshot_2025_11_08_150135;
-            ClientSize = new Size(1393, 827);
+            ClientSize = new Size(2786, 1654);
             Controls.Add(tableLayoutPanel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(6, 6, 6, 6);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "TitleScreen";
             Text = "TitleScreen";
-            ((System.ComponentModel.ISupportInitialize)cameraFlippedPbx).EndInit();
             ((System.ComponentModel.ISupportInitialize)cameraPbx).EndInit();
+            ((System.ComponentModel.ISupportInitialize)cameraFlippedPbx).EndInit();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ResumeLayout(false);
@@ -171,11 +163,11 @@
         #endregion
 
         private Label movieGameTitleLbl;
-        private Label headline2Lbl;
         private Label headline1Lbl;
-        private PictureBox cameraFlippedPbx;
+        private Label headline2Lbl;
         private PictureBox cameraPbx;
-        private TableLayoutPanel tableLayoutPanel1;
+        private PictureBox cameraFlippedPbx;
         private Button startGameBtn;
+        private TableLayoutPanel tableLayoutPanel1;
     }
 }
