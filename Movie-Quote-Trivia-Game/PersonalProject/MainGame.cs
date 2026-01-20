@@ -73,7 +73,7 @@ namespace PersonalProject
                 soundPlayer = new SoundPlayer(soundPath);
                 soundPlayer.Play();
             }
-            
+
         }
 
         // ---------------------------------------
@@ -84,9 +84,9 @@ namespace PersonalProject
         void LoadData()
         {
             //Declaring a list to represent each visible red X representing an incorrect answer
-            redXList = new List<PictureBox> { redX1, redX2, redX3 }; 
+            redXList = new List<PictureBox> { redX1, redX2, redX3 };
             //Declaring strings to represent each environment variable to connect to SQl database
-            string server = Environment.GetEnvironmentVariable("DB_SERVER"); 
+            string server = Environment.GetEnvironmentVariable("DB_SERVER");
             string port = Environment.GetEnvironmentVariable("DB_PORT");
             string user = Environment.GetEnvironmentVariable("DB_USER");
             string password = Environment.GetEnvironmentVariable("DB_PASSWORD");
@@ -105,7 +105,8 @@ namespace PersonalProject
                 catch (Exception failure)
                 {
                     Console.WriteLine("Error connecting to mysql database");
-                };
+                }
+                ;
             }
             //Second connection which is used for actually loading data / running queries
             using (MySqlConnection connection = new MySqlConnection(connectionString)) // Connectiong to the database using the connectionString
@@ -182,7 +183,7 @@ namespace PersonalProject
                         string quoteMovieName = dataReader.GetString("movie_name");
                         string quoteURL;
                         //Check if the quote URL is null as some url values from the table are null
-                        quoteURL = dataReader.IsDBNull(dataReader.GetOrdinal("quote_url"))? null: dataReader.GetString("quote_url");
+                        quoteURL = dataReader.IsDBNull(dataReader.GetOrdinal("quote_url")) ? null : dataReader.GetString("quote_url");
 
                         //Matching quote data with data from the other tables
                         foreach (Celebrity celeb in celebrities)
@@ -277,7 +278,7 @@ namespace PersonalProject
             movies.Clear(); //Empty movies list
             hints.Clear(); //Empty hints list
             score = 0; //Set score to 0
-            scoreNumbLbl.Text = (score.ToString() + "/" + totalScore); //Set score label to default
+            scoreLbl.Text = ("Score: " + score.ToString() + "/" + totalScore); //Set score label to default
             incorrectGuesses = 0; //Set incorrect guesses back to 0
             //Make red Xs invisible again
             redX1.Visible = false;
@@ -475,7 +476,7 @@ namespace PersonalProject
         {
             PlaySound("correct.wav");
             score++;
-            scoreNumbLbl.Text = (score.ToString() + "/" + totalScore.ToString());
+            scoreLbl.Text = ("Score: " + score.ToString() + "/" + totalScore.ToString());
         }
 
         // Function for adding a red X if the answer is incorrect and incrementing number of wrong guesses
@@ -756,7 +757,6 @@ namespace PersonalProject
         }
 
         //Function for telling the user that they cannot use a powerup because they chose the "hard" difficulty
-
         void DeclinePowerup()
         {
             MessageBox.Show("Sorry, but you chose the hard difficulty. No powerups allowed!");
@@ -781,7 +781,7 @@ namespace PersonalProject
             MessageBox.Show("How to play: \n\n1)A movie quote will be displayed to you\n\n" +
         "2)You will be given three options of who said the quote" +
         "\n\n3)If you guess correctly, you will gain a point and proceed to a bonus round. 10 points and you win! if you get it incorrect you will be given an X. Three X's and you lose" +
-        "\n\n4)In the bonus round, you will be given an opportunity to guess which movie the quote is from. If you guess correctly, you gain a point. However, if you guess incorrectly you do NOT gain an X (unless you've chosen the hard difficulty");
+        "\n\n4)In the bonus round, you will be given an opportunity to guess which movie the quote is from. If you guess correctly, you gain a point. However, if you guess incorrectly you do NOT gain an X (unless you've chosen the hard difficulty)");
             soundPlayer.Stop();
         }
 
