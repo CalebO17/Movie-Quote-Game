@@ -26,7 +26,7 @@ Make sure you have Visual Studio installed to run the C# `.sln` file, along with
 
 To install the Movie Trivia Game, you must first clone the repository to your local PC.
 
-![White text on a black background that showcases cloning a github repo using the command prompt. The command is "git clone https://github.com/CalebO17/Movie-Quote-Game](<img width="1386" height="877" alt="Screenshot 2025-12-28 125339" src="https://github.com/user-attachments/assets/c0a366ef-3c81-4b7f-a347-dad9ecca5125" />)
+![White text on a black background that showcases cloning a github repo using the command prompt. The command is "git clone https://github.com/CalebO17/Movie-Quote-Game](https://github.com/user-attachments/assets/c0a366ef-3c81-4b7f-a347-dad9ecca5125)
 
 
 ```bash
