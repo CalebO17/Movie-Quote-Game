@@ -26,10 +26,6 @@ Make sure you have Visual Studio installed to run the C# `.sln` file, along with
 
 To install the Movie Trivia Game, you must first clone the repository to your local PC.
 
-![White text on a black background that showcases cloning a github repo using the command prompt. The command is "git clone https://github.com/CalebO17/Movie-Quote-Game](https://github.com/user-attachments/assets/3a234a7b-e902-4214-ae31-1a29baeabf7e)
-
-
-
 ```bash
   git clone https://github.com/CalebO17/Movie-Quote-Game
 ```
@@ -61,7 +57,8 @@ Once all of these steps are done, you simply need to run the project and play th
 
 After successfuly installing and running the software, you will be greeted with a title screen with a "Start Game" button.
 
-![Green background and in the center of it is a start game button with two cameras on either side pointing to the button. Text below the button says "Do you want to test your movie knowledge? You're in the right place!](https://github.com/user-attachments/assets/c0a366ef-3c81-4b7f-a347-dad9ecca5125)
+![Green background and in the center of it is a start game button with two cameras on either side pointing to the button. Text below the button says "Do you want to test your movie knowledge? You're in the right place!](https://github.com/user-attachments/assets/110301f5-1147-47d1-ab52-d150b6d64dd6)
+
 
 After clicking the button, it will ask you what difficulty you would like to play
 
@@ -91,7 +88,8 @@ Each powerup will give a different benefit to the player to assist them in winni
 
 - X - Tells the player one of the celebrities that is "NOT" correct, essentially giving them a 50/50 chance of guessing the correct answer.
 
-If you guess correctly, you will gain a point and move onto the bonus round. If you guess incorrectly, you will gain an X. ![Image of a message box with the text "You got it correct, it was Zendaya Coleman, but can you guess the movie for an extra point?"](https://github.com/user-attachments/assets/11b01a53-62a5-4640-904c-e2f9393da5d2)
+If you guess correctly, you will gain a point and move onto the bonus round. If you guess incorrectly, you will gain an X. ![Image of a message box with the text "You got it correct, it was Zendaya Coleman, but can you guess the movie for an extra point?"](https://github.com/user-attachments/assets/1d256417-8ccc-4633-8d9b-efa1301e1302)
+
 
 
 The bonus round is an opportunity to gain an extra point. If you chose "Easy" then you will not gain a red X for guessing incorrectly. However if you chose "Medium" or "Hard" you will gain a red X for answering incorrectly.
