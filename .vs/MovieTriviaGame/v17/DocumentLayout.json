@@ -1,0 +1,97 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ohara\\OneDrive\\Desktop\\MovieTriviaGame\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{10C7158E-565B-4FC5-BF73-EE9BEADF83AE}|MovieTriviaGame\\MovieTriviaGame.csproj|c:\\users\\ohara\\onedrive\\desktop\\movietriviagame\\movietriviagame\\personalproject.sql||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{10C7158E-565B-4FC5-BF73-EE9BEADF83AE}|MovieTriviaGame\\MovieTriviaGame.csproj|solutionrelative:movietriviagame\\personalproject.sql||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10C7158E-565B-4FC5-BF73-EE9BEADF83AE}|MovieTriviaGame\\MovieTriviaGame.csproj|c:\\users\\ohara\\onedrive\\desktop\\movietriviagame\\movietriviagame\\maingame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10C7158E-565B-4FC5-BF73-EE9BEADF83AE}|MovieTriviaGame\\MovieTriviaGame.csproj|solutionrelative:movietriviagame\\maingame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10C7158E-565B-4FC5-BF73-EE9BEADF83AE}|MovieTriviaGame\\MovieTriviaGame.csproj|C:\\Users\\ohara\\OneDrive\\Desktop\\MovieTriviaGame\\movietriviagame\\maingame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{10C7158E-565B-4FC5-BF73-EE9BEADF83AE}|MovieTriviaGame\\MovieTriviaGame.csproj|solutionrelative:movietriviagame\\maingame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10C7158E-565B-4FC5-BF73-EE9BEADF83AE}|MovieTriviaGame\\MovieTriviaGame.csproj|c:\\users\\ohara\\onedrive\\desktop\\movietriviagame\\movietriviagame\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10C7158E-565B-4FC5-BF73-EE9BEADF83AE}|MovieTriviaGame\\MovieTriviaGame.csproj|solutionrelative:movietriviagame\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "personalproject.sql",
+              "DocumentMoniker": "C:\\Users\\ohara\\OneDrive\\Desktop\\MovieTriviaGame\\MovieTriviaGame\\personalproject.sql",
+              "RelativeDocumentMoniker": "MovieTriviaGame\\personalproject.sql",
+              "ToolTip": "C:\\Users\\ohara\\OneDrive\\Desktop\\MovieTriviaGame\\MovieTriviaGame\\personalproject.sql",
+              "RelativeToolTip": "MovieTriviaGame\\personalproject.sql",
+              "ViewState": "AgIAAFMBAAAAAAAAAAAAAFYBAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-01-25T21:41:31.144Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainGame.cs",
+              "DocumentMoniker": "C:\\Users\\ohara\\OneDrive\\Desktop\\MovieTriviaGame\\MovieTriviaGame\\MainGame.cs",
+              "RelativeDocumentMoniker": "MovieTriviaGame\\MainGame.cs",
+              "ToolTip": "C:\\Users\\ohara\\OneDrive\\Desktop\\MovieTriviaGame\\MovieTriviaGame\\MainGame.cs",
+              "RelativeToolTip": "MovieTriviaGame\\MainGame.cs",
+              "ViewState": "AgIAAD4CAAAAAAAAAAAMwMQBAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-22T22:54:29.579Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainGame.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\ohara\\OneDrive\\Desktop\\MovieTriviaGame\\MovieTriviaGame\\MainGame.cs",
+              "RelativeDocumentMoniker": "MovieTriviaGame\\MainGame.cs",
+              "ToolTip": "C:\\Users\\ohara\\OneDrive\\Desktop\\MovieTriviaGame\\MovieTriviaGame\\MainGame.cs [Design]",
+              "RelativeToolTip": "MovieTriviaGame\\MainGame.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-22T22:54:19.254Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ohara\\OneDrive\\Desktop\\MovieTriviaGame\\MovieTriviaGame\\Program.cs",
+              "RelativeDocumentMoniker": "MovieTriviaGame\\Program.cs",
+              "ToolTip": "C:\\Users\\ohara\\OneDrive\\Desktop\\MovieTriviaGame\\MovieTriviaGame\\Program.cs",
+              "RelativeToolTip": "MovieTriviaGame\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-20T19:37:45.688Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
