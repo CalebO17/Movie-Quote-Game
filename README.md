@@ -52,9 +52,7 @@ Once all of these steps are done, you simply need to run the project and play th
 
 ![Green arrow with the text "PersonalProject" next to it.](https://github.com/user-attachments/assets/9ed4cc38-c52f-4b81-90af-b8c87b65a219)
 
-NOTE: If Visual Studio asks you to install .NET, simply click on the link it gives, and install![Image of a web browser after installing .NET with text that says "Thanks for downloading"](https://github.com/user-attachments/assets/e9a9289a-b5f1-4f64-8e3a-2ddc931a3176)
-[Window Displaying that the installation was successful](https://github.com/user-attachments/assets/1789e55a-6a1d-4965-a2af-c989a9489b50)
-
+NOTE: If Visual Studio asks you to install .NET, that means .NET is not installed correctly, simply click on the link it gives, and install![Image of a web browser after installing .NET with text that says "Thanks for downloading"](https://github.com/user-attachments/assets/e9a9289a-b5f1-4f64-8e3a-2ddc931a3176)
 
 ## How to play
 
